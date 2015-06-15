@@ -18,8 +18,7 @@ fifo fifo0 (
     .fifo_input(phr_psdu_in), 
     .fifo_input_valid(phr_psdu_in_valid), 
     .fifo_output(fifo_output), 
-    .fifo_output_valid(fifo_output_valid), 
-    .data_end(data_end)
+    .fifo_output_valid(fifo_output_valid)
 );
 
 
