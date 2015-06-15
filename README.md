@@ -93,6 +93,10 @@
     assign TX_OUT = ~fcs_n;
 ```
 
+#### 串行输出
+
+* 只需在产生并行结果`TX_OUT[15:0]`后，进行移位输出即可;
+
 ## modules
 
 ### fifo
