@@ -256,6 +256,8 @@
 
 ![wave](wave.png)
 
+输出结果**正确**
+
 ## DC综合
 
 ```
@@ -395,9 +397,575 @@ Wire Load Model Mode: top
 
 ```
 
+## 综合后仿真
+
+![post-route_test](post-route_test.png)
+
+波形与综合前波形**几乎没有任何区别**
+
+## 布局布线
+
+### pre CTS
+
+![pre-CTS](pre-CTS.png)
+
+### post CTS
+
+![post-CTS](post-CTS.png)
+
+### trail routing
+
+![trail_routing](trail_routing.png)
+
+### nano routing
+
+![nano_routing](nano_routing.png)
+
+### add filler
+
+![add_filler](add_filler.png)
+
+### _final_
+
+![final](final.png)
+
+
+## *附* 源码
+
+### framing_encoding.v
+
+```verilog
+// framing_encoding.v
+
+module framing_encoding (
+    input clk,  // 10kHz
+    input reset_n,  // asynchronous reset active low
+    input [7:0] phr_psdu_in, 
+    input phr_psdu_in_valid, 
+    output framing_encoding_out, 
+    output framing_encoding_out_valid 
+);
+
+fifo FIFO(
+    .clk(clk), 
+    .reset_n(reset_n), 
+    .fifo_input(phr_psdu_in), 
+    .fifo_input_valid(phr_psdu_in_valid), 
+
+    .fifo_output(fifo_output), 
+    .fifo_output_valid(fifo_output_valid)
+);
+
+crc CRC(
+    .clk(clk), 
+    .reset_n(reset_n), 
+    .tx_data(fifo_output), 
+    .tx_data_valid(fifo_output_valid), 
+
+    .tx_out(crc_output), 
+    .tx_out_valid(crc_output_valid)
+);
+
+select_whiting_input SELECT(
+    .clk(clk), 
+    .reset_n(reset_n), 
+    .fifo_output(fifo_output), 
+    .fifo_output_valid(fifo_output_valid), 
+    .crc_output(crc_output), 
+    .crc_output_valid(crc_output_valid), 
+
+    .whiting_input(whiting_input), 
+    .whiting_input_valid(whiting_input_valid)
+);
+
+whiting WHITING(
+    .clk(clk), 
+    .reset_n(reset_n), 
+    .tx_data(whiting_input), 
+    .tx_data_valid(whiting_input_valid), 
+
+    .tx_out(framing_encoding_out), 
+    .tx_out_valid(framing_encoding_out_valid)
+);
+
+endmodule
+
+module select_whiting_input (
+    input clk, 
+    input reset_n, 
+    input fifo_output, 
+    input fifo_output_valid, 
+    input crc_output, 
+    input crc_output_valid, 
+    output reg whiting_input, 
+    output reg whiting_input_valid
+);
+
+reg pre_input;
+reg [1:0] state;
+// state == 0: waiting for input data
+// state == 1: stored one bit data in pre_input
+// state == 2: pre_input is empty, turns into a buffer
+
+always @(posedge clk or negedge reset_n) begin
+    if (~reset_n) begin
+        whiting_input_valid <= 0;
+        state <= 0;
+    end else begin
+        if (state == 0) begin
+            if (fifo_output_valid) begin
+                pre_input <= fifo_output;
+                whiting_input_valid <= 0;
+                state <= 1;
+            end else state <= 0;
+        end else if (state == 1) begin
+            whiting_input <= pre_input;
+            whiting_input_valid <= 1;
+            if (fifo_output_valid) begin
+                pre_input <= fifo_output;
+                state <= 1;
+            end else if (crc_output_valid) begin
+                pre_input <= crc_output;
+                state <= 1;
+            end else begin
+                state <= 2;
+            end
+        end else begin
+            if (fifo_output_valid) begin
+                whiting_input <= fifo_output;
+                whiting_input_valid <= 1;
+                state <= 2;
+            end else if (crc_output_valid) begin
+                whiting_input <= crc_output;
+                whiting_input_valid <= 1;
+                state <= 2;
+            end else begin
+                whiting_input_valid <= 0;
+                state <= 0;
+            end
+        end
+    end
+end
+
+endmodule
+```
+
+### fifo.v
+
+```verilog
+// fifo.v
+
+module fifo (
+    input clk, 
+    input reset_n, 
+    input [7:0] fifo_input,   // 8 bit in
+    input fifo_input_valid, 
+    output reg fifo_output,     // 1 bit out
+    output reg fifo_output_valid
+    // output fifo_full
+);
+
+parameter MEMORY_SIZE = 8;
+integer i;
+
+reg [7:0] memory [MEMORY_SIZE - 1:0];
+reg [2:0] col;  // mark which bit to output
+reg [2:0] read_row;  // mark which row to output
+reg [2:0] write_row; // mark which row to write data
+reg [3:0] count;    // count the number of 1-Byte-data still in memory
+reg [7:0] send_count;  // count the number of data sent out
+reg [7:0] data_size;    // Bytes of phr + psdu is data_size
+reg read_data_size;     // tag: high active to catch data_size
+reg [6:0] shr_count;    // count: output SHR code
+reg [79:0] shr;         // SHR code: {16'hF3_98, 64'hAA_AA_AA_AA_AA_AA_AA_AA}
+
+always @(posedge clk or negedge reset_n) begin
+    if (~reset_n) begin
+        // initialize memory
+        for (i = 0; i < MEMORY_SIZE; i = i + 1) begin
+            memory[i] <= 8'h00;
+        end
+        // initialize row, col
+        // ready to output memory[0][0], but memory is empty
+        col <= 3'b000;
+        read_row <= 3'b000;
+        write_row <= 3'b000;
+        fifo_output <= 0;
+        fifo_output_valid <= 0;
+        count <= 0;
+        send_count <= 0;
+        read_data_size <= 1;
+        shr_count <= 0;
+        shr <= {16'hF3_98, 64'hAA_AA_AA_AA_AA_AA_AA_AA};
+    end else begin
+        if (fifo_input_valid && count < MEMORY_SIZE) begin   // store input data
+            if (read_data_size) begin
+                data_size <= fifo_input;    // first Byte
+                read_data_size <= 0;        // flag off
+            end
+            if (count == 0) begin
+                memory[0] <= fifo_input;    // store into empty memory
+                read_row <= 0;
+                write_row <= 1;
+            end else begin
+                memory[write_row] <= fifo_input;
+                write_row <= write_row + 1;
+            end
+            count <= count + 1;
+        end
+        if (count != 0) begin      // output data
+            if (shr_count == 80) begin      // SHR end
+                shr <= {16'hF3_98, 64'hAA_AA_AA_AA_AA_AA_AA_AA};
+                fifo_output <= memory[read_row][col];
+                fifo_output_valid <= 1;
+                if (col == 7) begin     // one Byte data is sent out
+                    read_row <= read_row + 1;
+                    count <= count - 1;
+                    if (send_count == data_size) begin  // data end
+                        send_count <= 0;
+                        read_data_size <= 1;    // catch next data_size
+                        shr_count <= 0;
+                    end else send_count <= send_count + 1;
+                end
+                col <= col + 1;
+            end else begin      // outputing SHR code
+                fifo_output <= shr[0];
+                fifo_output_valid <= 1;
+                shr <= shr >> 1;
+                shr_count <= shr_count + 1;
+            end
+        end else fifo_output_valid <= 0;
+    end
+end
+
+endmodule 
+```
+
+### crc.v
+
+```verilog
+// crc.v
+
+module crc (
+    input clk,  // 10kHz
+    input reset_n,  // asynchronous reset active low
+    input tx_data, 
+    input tx_data_valid, 
+    output reg tx_out,  // serial output
+    output reg tx_out_valid     // high active when outputing FCS code serially
+);
+
+reg [15:0] fcs_n;
+reg [6:0] shr_count;
+reg [3:0] fcs_count;
+
+always @(posedge clk or negedge reset_n) begin
+    if (~reset_n) begin
+        fcs_n <= 16'hffff;
+        shr_count <= 0;
+        fcs_count <= 0;
+    end else begin
+        if (tx_data_valid) begin
+            if (shr_count == 80) begin
+                fcs_n <= {fcs_n[0]^tx_data, fcs_n[15:12], 
+                          fcs_n[11]^fcs_n[0]^tx_data, fcs_n[10:5], 
+                          fcs_n[4]^fcs_n[0]^tx_data, fcs_n[3:1]};
+            end else shr_count <= shr_count + 1;
+        end else if (shr_count == 80) begin
+            tx_out_valid <= 1;
+            tx_out <= ~fcs_n[0];
+            fcs_n <= fcs_n >> 1;
+            if (fcs_count == 15) shr_count <= 0;    // ready to receive next data;
+            fcs_count <= fcs_count + 1;
+        end else begin
+            tx_out_valid <= 0;
+            shr_count <= 0;
+        end
+    end
+end
+
+endmodule
+```
+
+### whiting.v
+
+```verilog
+// whiting.v
+
+module whiting (
+    input clk, 
+    input reset_n, 
+    input tx_data,  // serial input
+    input tx_data_valid, 
+    output reg tx_out,  // serial output
+    output reg tx_out_valid 
+);
+
+reg [8:0] pseudo_rand;
+reg [6:0] shr_count;
+reg data_received;
+
+always @(posedge clk or negedge reset_n) begin
+    if (~reset_n) begin
+        pseudo_rand <= 9'b111_111_111;
+        tx_out_valid <= 0;
+        shr_count <= 0;
+        data_received <= 0;
+    end else begin
+        if (tx_data_valid) begin
+            if (shr_count == 80) begin
+                tx_out <= tx_data ^ pseudo_rand[0];
+                tx_out_valid <= 1;
+                pseudo_rand <= {pseudo_rand[5]^pseudo_rand[0], pseudo_rand[8:1]};
+                data_received <= 1;
+            end else begin
+                shr_count <= shr_count + 1;
+                tx_out <= tx_data;
+                tx_out_valid <= 1;
+                data_received <= 0;
+            end
+        end else if (data_received) begin   // ready to receive SHR of next data
+            tx_out_valid <= 0;
+            shr_count <= 0;
+            data_received <= 1;
+        end else begin
+            tx_out_valid <= 0;  // waiting for PHR PSDU FCS
+        end
+    end
+end
+
+endmodule
+```
+
+### framing_encoding_test.v
+
+```verilog
+`timescale 1us/100ns
+
+module framing_encoding_test;
+
+     wire             framing_encoding_out;
+     wire             framing_encoding_out_valid;
+     reg     [7:0]    phr_psdu_in;
+     reg              phr_psdu_in_valid;
+     reg              clk;
+     reg              reset_n;
+ 
+ 
+ 
+
+ framing_encoding u0framing_encoding(
+                                    .framing_encoding_out        (framing_encoding_out),
+                                    .framing_encoding_out_valid  (framing_encoding_out_valid),
+                                    .phr_psdu_in                 (phr_psdu_in),
+                                    .phr_psdu_in_valid           (phr_psdu_in_valid),
+                                    .clk                         (clk),
+                                    .reset_n                     (reset_n)
+                                    );
+
+// stop simulation after 20000us
+  initial 
+    begin
+    #20000 $stop;
+    end
+
 
     
+// generate data input signal
+  initial 
+    begin
+             phr_psdu_in=8'h00;
+        #500 phr_psdu_in=8'h07;
+        #100 phr_psdu_in=8'h03;
+        #100 phr_psdu_in=8'h01;
+        #100 phr_psdu_in=8'h05;
+        #100 phr_psdu_in=8'h21;
+        #100 phr_psdu_in=8'h43;
+        #100 phr_psdu_in=8'h65;
+        #100 phr_psdu_in=8'h87;
+    end
+
+// generate phr_psdu_in_valid signal
+  initial 
+    begin
+             phr_psdu_in_valid =1'b0;
+        #500 phr_psdu_in_valid =1'b1;
+        #800 phr_psdu_in_valid =1'b0;
+    end
     
+// generate clk signal
+  initial 
+    begin
+        clk=1'b0;
+    end
+always #50 clk=~clk;
+
+// generate resrt_n signal
+  initial 
+    begin
+               reset_n=1'b1;
+        #  520 reset_n=1'b0;
+        #  20  reset_n=1'b1;
+    end
+
+endmodule
+```
+
+### fifo_test.v
+
+```verilog
+// fifo_test.v
+`timescale 1us/100ns
+
+module fifo_test;
+
+     wire             fifo_output;
+     wire             fifo_output_valid;
+     reg     [7:0]    phr_psdu_in;
+     reg              phr_psdu_in_valid;
+     reg              clk;
+     reg              reset_n;
+ 
+ 
+ 
+fifo fifo0 (
+    .clk(clk), 
+    .reset_n(reset_n), 
+    .fifo_input(phr_psdu_in), 
+    .fifo_input_valid(phr_psdu_in_valid), 
+    .fifo_output(fifo_output), 
+    .fifo_output_valid(fifo_output_valid)
+);
+
+
+// stop simulation after 20000us
+  initial 
+    begin
+    #20000 $stop;
+    end
+
+
     
+// generate data input signal
+  initial 
+    begin
+             phr_psdu_in=8'h00;
+        #500 phr_psdu_in=8'h07;
+        #100 phr_psdu_in=8'h03;
+        #100 phr_psdu_in=8'h01;
+        #100 phr_psdu_in=8'h05;
+        #100 phr_psdu_in=8'h21;
+        #100 phr_psdu_in=8'h43;
+        #100 phr_psdu_in=8'h65;
+        #100 phr_psdu_in=8'h87;
+    end
+
+// generate phr_psdu_in_valid signal
+  initial 
+    begin
+             phr_psdu_in_valid =1'b0;
+        #500 phr_psdu_in_valid =1'b1;
+        #800 phr_psdu_in_valid =1'b0;
+    end
     
+// generate clk signal
+  initial 
+    begin
+        clk=1'b0;
+    end
+always #50 clk=~clk;
+
+// generate resrt_n signal
+  initial 
+    begin
+               reset_n=1'b1;
+        #  520 reset_n=1'b0;
+        #  20  reset_n=1'b1;
+    end
+
+endmodule
+```
+
+### crc_test.v
+
+```verilog
+// crc_test.v
+`timescale 1us/100ns
+
+module crc_test;
+
+     wire             tx_out;
+     reg     [7:0]    phr_psdu_in;
+     reg              phr_psdu_in_valid;
+     reg              clk;
+     reg              reset_n;
+ 
+ 
+ 
+fifo fifo0 (
+    .clk(clk), 
+    .reset_n(reset_n), 
+    .fifo_input(phr_psdu_in), 
+    .fifo_input_valid(phr_psdu_in_valid), 
+    .fifo_output(fifo_output), 
+    .fifo_output_valid(fifo_output_valid) 
+);
+
+crc crc0 (
+    .clk(clk), 
+    .reset_n(reset_n), 
+    .tx_data(fifo_output), 
+    .tx_data_valid(fifo_output_valid), 
+    .tx_out(tx_out),
+    .tx_out_valid(tx_out_valid)
+);
+
+
+// stop simulation after 20000us
+  initial 
+    begin
+    #20000 $stop;
+    end
+
+
     
+// generate data input signal
+  initial 
+    begin
+             phr_psdu_in=8'h00;
+        #500 phr_psdu_in=8'h07;
+        #100 phr_psdu_in=8'h03;
+        #100 phr_psdu_in=8'h01;
+        #100 phr_psdu_in=8'h05;
+        #100 phr_psdu_in=8'h21;
+        #100 phr_psdu_in=8'h43;
+        #100 phr_psdu_in=8'h65;
+        #100 phr_psdu_in=8'h87;
+    end
+
+// generate phr_psdu_in_valid signal
+  initial 
+    begin
+             phr_psdu_in_valid =1'b0;
+        #500 phr_psdu_in_valid =1'b1;
+        #800 phr_psdu_in_valid =1'b0;
+    end
+    
+// generate clk signal
+  initial 
+    begin
+        clk=1'b0;
+    end
+always #50 clk=~clk;
+
+// generate reset_n signal
+  initial 
+    begin
+               reset_n=1'b1;
+        #  520 reset_n=1'b0;
+        #  20  reset_n=1'b1;
+    end
+
+endmodule
+```
+
