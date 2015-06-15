@@ -252,8 +252,150 @@
     reg [6:0] shr_count;        // count from 0 to 79
 ```
 
-## 
-    
+## NC仿真
+
+![wave](wave.png)
+
+## DC综合
+
+```
+****************************************
+
+Library(s) Used:
+
+    typical (File: /soft1/course_lib_umc18/tt_1v8_25c.db)
+
+Number of ports:               13
+Number of nets:                19
+Number of cells:                4
+Number of references:           4
+
+Combinational area:       10857.369742
+Noncombinational area:    16306.012917
+Net Interconnect area:    104627.203186
+
+Total cell area:          27163.382659
+Total area:               131790.585845
+ 
+****************************************
+Report : area
+Design : framing_encoding
+Version: D-2010.03
+Date   : Sat Jun 13 22:54:19 2015
+****************************************
+```
+
+```
+****************************************
+
+Operating Conditions: typical   Library: typical
+Wire Load Model Mode: top
+
+  Startpoint: FIFO/count_reg[1]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: FIFO/send_count_reg[0]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  framing_encoding   umc18_wl10            typical
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  FIFO/count_reg[1]/CK (DFFRHQX1)          0.00       0.00 r
+  FIFO/count_reg[1]/Q (DFFRHQX1)           0.64       0.64 r
+  FIFO/U288/Y (OR4X2)                      0.19       0.82 r
+  FIFO/U51/Y (INVX2)                       0.09       0.92 f
+  FIFO/U42/Y (INVX2)                       0.11       1.03 r
+  FIFO/U11/Y (INVX2)                       0.10       1.13 f
+  FIFO/U49/Y (NOR2X1)                      0.79       1.92 r
+  FIFO/U145/Y (AND2X1)                     0.22       2.14 r
+  FIFO/U152/Y (NAND2X1)                    0.16       2.30 f
+  FIFO/U50/Y (NOR2X1)                      0.63       2.92 r
+  FIFO/U41/Y (INVX2)                       0.46       3.38 f
+  FIFO/U47/Y (NOR2X1)                      0.84       4.22 r
+  FIFO/U285/Y (NAND2X1)                    0.07       4.29 f
+  FIFO/U284/Y (OAI2BB1X1)                  0.15       4.44 r
+  FIFO/send_count_reg[0]/D (DFFRHQX1)      0.00       4.44 r
+  data arrival time                                   4.44
+
+  clock clk (rise edge)                100000.00  100000.00
+  clock network delay (ideal)              0.00   100000.00
+  FIFO/send_count_reg[0]/CK (DFFRHQX1)     0.00   100000.00 r
+  library setup time                      -0.14   99999.86
+  data required time                              99999.86
+  -----------------------------------------------------------
+  data required time                              99999.86
+  data arrival time                                  -4.44
+  -----------------------------------------------------------
+  slack (MET)                                     99995.42
+
+
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+        -sort_by group
+Design : framing_encoding
+Version: D-2010.03
+Date   : Sat Jun 13 22:54:30 2015
+****************************************
+
+Operating Conditions: typical   Library: typical
+Wire Load Model Mode: top
+
+  Startpoint: FIFO/count_reg[1]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: FIFO/send_count_reg[0]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  framing_encoding   umc18_wl10            typical
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  FIFO/count_reg[1]/CK (DFFRHQX1)          0.00       0.00 r
+  FIFO/count_reg[1]/Q (DFFRHQX1)           0.64       0.64 r
+  FIFO/U288/Y (OR4X2)                      0.19       0.82 r
+  FIFO/U51/Y (INVX2)                       0.09       0.92 f
+  FIFO/U42/Y (INVX2)                       0.11       1.03 r
+  FIFO/U11/Y (INVX2)                       0.10       1.13 f
+  FIFO/U49/Y (NOR2X1)                      0.79       1.92 r
+  FIFO/U145/Y (AND2X1)                     0.22       2.14 r
+  FIFO/U152/Y (NAND2X1)                    0.16       2.30 f
+  FIFO/U50/Y (NOR2X1)                      0.63       2.92 r
+  FIFO/U41/Y (INVX2)                       0.46       3.38 f
+  FIFO/U47/Y (NOR2X1)                      0.84       4.22 r
+  FIFO/U285/Y (NAND2X1)                    0.07       4.29 f
+  FIFO/U284/Y (OAI2BB1X1)                  0.15       4.44 r
+  FIFO/send_count_reg[0]/D (DFFRHQX1)      0.00       4.44 r
+  data arrival time                                   4.44
+
+  clock clk (rise edge)                100000.00  100000.00
+  clock network delay (ideal)              0.00   100000.00
+  FIFO/send_count_reg[0]/CK (DFFRHQX1)     0.00   100000.00 r
+  library setup time                      -0.14   99999.86
+  data required time                              99999.86
+  -----------------------------------------------------------
+  data required time                              99999.86
+  data arrival time                                  -4.44
+  -----------------------------------------------------------
+  slack (MET)                                     99995.42
+
+```
+
+
     
     
     
