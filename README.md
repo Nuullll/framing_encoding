@@ -160,7 +160,8 @@
     reg [7:0] memory [7:0];     // 8 Bytes memory
     reg [2:0] count;            // count Bytes already stored in memory
     reg [2:0] col, read_row;    // point to bit memory ready to output
-    reg [2:0] write_row;        // point to next empty row in memory for storing input data
+    reg [2:0] write_row;        // point to next empty row in memory
+                                // for storing input data
 ```
 
 * 从第一字节数据中获取码长信息
