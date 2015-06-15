@@ -1,4 +1,28 @@
-# Framing_encoding
+# 物理层组帧编码 *framing_encoding*
+
+## 顶层设计
+
+### 模块接口
+
+![interface](framing_encoding模块接口图.png)
+
+```vhdl
+    input clk;
+    input reset_n;
+    input [7:0] phr_psdu_in;
+    input phr_psdu_in_valid;
+
+    output framing_encoding_out;
+    output framing_encoding_out_valid;
+```
+
+### 内部结构
+
+![structure](framing_encoidng模块内部结构图.png)
+
+## 原理分析
+
+
 
 ## modules
 
