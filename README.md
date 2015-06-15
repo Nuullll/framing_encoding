@@ -54,11 +54,44 @@
                   fcs_n[11]^fcs_n[0]^TX_DATA, fcs_n[10:5],
                   fcs_n[4]^fcs_n[0]^TX_DATA, fcs_n[3:1]};
     end
+    
+    assign TX_OUT = ~fcs_n;
 ```
 
 #### 并入并出
 
+* 根据串入并出可推导出，输入`8 Bits`数据后，`fcs_n`的变化：
 
+```vhdl
+    always @(posedge clk) begin
+        fcs_n1 <= {fcs_n[0]^TX_DATA[0], fcs_n[15:12],
+                   fcs_n[11]^fcs_n[0]^TX_DATA[0], fcs_n[10:5],
+                   fcs_n[4]^fcs_n[0]^TX_DATA[0], fcs_n[3:1]};
+		fcs_n2 <= {fcs_n1[0]^TX_DATA[1], fcs_n1[15:12],
+                   fcs_n1[11]^fcs_n1[0]^TX_DATA[1], fcs_n1[10:5],
+                   fcs_n1[4]^fcs_n1[0]^TX_DATA[1], fcs_n1[3:1]};
+        fcs_n3 <= {fcs_n2[0]^TX_DATA[2], fcs_n2[15:12],
+                   fcs_n2[11]^fcs_n2[0]^TX_DATA[2], fcs_n2[10:5],
+                   fcs_n2[4]^fcs_n2[0]^TX_DATA[2], fcs_n2[3:1]};
+        fcs_n4 <= {fcs_n3[0]^TX_DATA[3], fcs_n3[15:12],
+                   fcs_n3[11]^fcs_n3[0]^TX_DATA[3], fcs_n3[10:5],
+                   fcs_n3[4]^fcs_n3[0]^TX_DATA[3], fcs_n3[3:1]};
+        fcs_n5 <= {fcs_n4[0]^TX_DATA[4], fcs_n4[15:12],
+                   fcs_n4[11]^fcs_n4[0]^TX_DATA[4], fcs_n4[10:5],
+                   fcs_n4[4]^fcs_n4[0]^TX_DATA[4], fcs_n4[3:1]};
+        fcs_n6 <= {fcs_n5[0]^TX_DATA[5], fcs_n5[15:12],
+                   fcs_n5[11]^fcs_n5[0]^TX_DATA[5], fcs_n5[10:5],
+                   fcs_n5[4]^fcs_n5[0]^TX_DATA[5], fcs_n5[3:1]};
+        fcs_n7 <= {fcs_n6[0]^TX_DATA[6], fcs_n6[15:12],
+                   fcs_n6[11]^fcs_n6[0]^TX_DATA[6], fcs_n6[10:5],
+                   fcs_n6[4]^fcs_n6[0]^TX_DATA[6], fcs_n6[3:1]};
+        fcs_n <= {fcs_n7[0]^TX_DATA[7], fcs_n7[15:12],
+                  fcs_n7[11]^fcs_n7[0]^TX_DATA[7], fcs_n7[10:5],
+                  fcs_n7[4]^fcs_n7[0]^TX_DATA[7], fcs_n7[3:1]};
+    end
+    
+    assign TX_OUT = ~fcs_n;
+```
 
 ## modules
 
