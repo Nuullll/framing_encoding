@@ -136,33 +136,49 @@
     
     4. `WHITING`在`crc_output_valid`有效时接收`CRC`输出串行`FCS`编码，此时`{PHR, PSDU}`正好白化完成并已输出，紧接着对`FCS`逐位白化，白化完成即整个编码过程结束;
 
-## modules
+## 模块实现
 
 ### fifo
 
-- input: 
-    + clk: 10kHz
-    + reset_n
-    + [7:0] fifo_input: 1 Byte data @(posedge clk)
-    + fifo_input_valid: high active, data valid
+### 端口
 
-- output: 
-    + fifo_output: 1 bit data @(posedge clk)
-    + fifo_output_valid: high active, output valid
+```vhdl
+    input clk;                  // 10kHz
+    input reset_n;              // low active
+    input [7:0] fifo_input;     // 1 Byte data in @(posedge clk)
+    input fifo_input_valid;     // high active
+    
+    output fifo_output;         // 1 bit data out @(posedge clk)
+    output fifo_output_valid;   // high active
+```
 
-- how it works:
-    + 8 bits in and 1 bit out @(posedge clk), using memory to store input data
-        + [7:0] memory [7:0]: 8 Bytes memory
-        + [2:0] count: count Bytes already stored in memory
-        + [2:0] col, read_row: point to bit memory ready to output
-        + [2:0] write_row: point to next empty row in memory for storing input data
-    + get PSDU's length info in first Byte of datastream
-        + read_data_size: high active when a new datastream starts
-        + [7:0] data_size: Bytes of data
-        + [7:0] send_count: count Bytes already sent out, when send_count == data_size, read_data_size high active
-    + framing SHR code, output SHR first, then PHR and PSDU
-        + [79:0] shr: 10 Bytes SHR code
-        + [6:0] shr_count: count whether SHR ends
+### 实现机制
+
+* 存储器解决进出速率不匹配问题
+
+```vhdl
+    reg [7:0] memory [7:0];     // 8 Bytes memory
+    reg [2:0] count;            // count Bytes already stored in memory
+    reg [2:0] col, read_row;    // point to bit memory ready to output
+    reg [2:0] write_row;        // point to next empty row in memory for storing input data
+```
+
+* 从第一字节数据中获取码长信息
+
+```vhdl
+    reg read_data_size;         // high active when a new datastream starts
+    reg [7:0] data_size;        // data size got from first Byte
+    reg [7:0] send_count;       // count Bytes already sent out, 
+                                // when send_count == data_size, 
+                                // read_data_size turns into high active
+```
+
+* 组合`SHR`编码，先输出`SHR`，再输出`PHR`和`PSDU`
+
+```vhdl
+    reg [79:0] shr;             // 10 Bytes SHR code
+    reg [6:0] shr_count;        // count whether SHR ends
+```
 
 ### crc
 
