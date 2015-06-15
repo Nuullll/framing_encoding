@@ -1,5 +1,9 @@
 # 物理层组帧编码 *framing_encoding*
 
+## 编码结构
+
+![encoding_structure](encoding_structure.png)
+
 ## 顶层设计
 
 ### 模块接口
