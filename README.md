@@ -99,7 +99,42 @@
 
 ### Data Whiting
 
+#### 串入并出
 
+![whiting_sp](whiting_sp.png)
+
+#### 串入串出
+
+* 输入数据直接与当前伪随机序列的最低位异或，得到的结果即输出数据;
+
+```vhdl
+    assign TX_OUT = pseudo_rand[0] ^ TX_DATA;
+```
+
+* 伪随机序列`pseudo_rand[8:0]`演化过程如下
+
+```vhdl
+    always @(posedge clk) begin
+        pseudo_rand <= {pseudo_rand[5]^pseudo_rand[0], pseudo_rand[8:1]};
+    end
+```
+
+### 综合考虑
+
+* 由于输入`8 Bits @(posedge clk)`与输出`1 Bit @(posedge clk)`的不匹配，各模块之间用并行方式进行连接只能为`CRC`和`WHITING`提速，从整体上看，最终并转串总会使输出速率降低;
+
+* 因此尝试在各模块之间用串行信号通信（串入串出白化编码模块较易实现）
+![final_structure](final_structure.png)
+
+* 编码过程：
+    
+    1. `FIFO`接收输入数据，存于存储器，一旦检测到有数据输入则开始串行输出编码的`80 Bits SHR`部分，`SHR`输出完毕后紧接着串行输出`PHR`和`PSDU`，此过程中`fifo_output_valid`有效;
+    
+    2. `WHITING`在`fifo_output_valid`有效时接收`FIFO`输出的`{SHR, PHR, PSDU}`，接收`SHR`时`WHITING`相当于`buffer`，接收`{PHR, PSDU}`时从低位开始逐位白化;
+    
+    3. `CRC`在`fifo_output_valid`有效时接收`FIFO`输出的`{SHR, PHR, PSDU}`，接收`SHR`时无操作，接收`{PHR, PSDU}`开始计算`FCS`，当`fifo_output_valid`无效时`FCS`计算完成，开始串行输出，`crc_output_valid`有效;
+    
+    4. `WHITING`在`crc_output_valid`有效时接收`CRC`输出串行`FCS`编码，此时`{PHR, PSDU}`正好白化完成并已输出，紧接着对`FCS`逐位白化，白化完成即整个编码过程结束;
 
 ## modules
 
