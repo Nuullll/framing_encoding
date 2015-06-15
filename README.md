@@ -47,3 +47,7 @@
     + serial output
         + [3:0] fcs_count: count from 0 to 15, to output fcs serially
         + tx_out_valid: high active when outputing fcs
+
+```vhdl
+    [7:0] data;
+```
