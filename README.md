@@ -10,7 +10,7 @@
 
 ![interface](interface.png)
 
-```vhdl
+```verilog
     input clk;
     input reset_n;
     input [7:0] phr_psdu_in;
@@ -48,7 +48,7 @@
 
 * 记图中16个D触发器当前状态为`fcs_n[15:0]`，则`fcs_n`状态转移过程如下
 
-```vhdl
+```verilog
     always @(posedge clk) begin
         fcs_n <= {fcs_n[0]^TX_DATA, fcs_n[15:12],
                   fcs_n[11]^fcs_n[0]^TX_DATA, fcs_n[10:5],
@@ -62,7 +62,7 @@
 
 * 根据串入并出可推导出，输入`8 Bits`数据后，`fcs_n`的变化：
 
-```vhdl
+```verilog
     always @(posedge clk) begin
         fcs_n1 <= {fcs_n[0]^TX_DATA[0], fcs_n[15:12],
                    fcs_n[11]^fcs_n[0]^TX_DATA[0], fcs_n[10:5],
@@ -107,13 +107,13 @@
 
 * 输入数据直接与当前伪随机序列的最低位异或，得到的结果即输出数据;
 
-```vhdl
+```verilog
     assign TX_OUT = pseudo_rand[0] ^ TX_DATA;
 ```
 
 * 伪随机序列`pseudo_rand[8:0]`演化过程如下
 
-```vhdl
+```verilog
     always @(posedge clk) begin
         pseudo_rand <= {pseudo_rand[5]^pseudo_rand[0], pseudo_rand[8:1]};
     end
@@ -142,7 +142,7 @@
 
 ### 端口
 
-```vhdl
+```verilog
     input clk;                  // 10kHz
     input reset_n;              // low active
     input [7:0] fifo_input;     // 1 Byte data in @(posedge clk)
@@ -156,7 +156,7 @@
 
 * 存储器解决进出速率不匹配问题
 
-```vhdl
+```verilog
     reg [7:0] memory [7:0];     // 8 Bytes memory
     reg [2:0] count;            // count Bytes already stored in memory
     reg [2:0] col, read_row;    // point to bit memory ready to output
@@ -175,7 +175,7 @@
 
 * 组合`SHR`编码，先输出`SHR`，再输出`PHR`和`PSDU`
 
-```vhdl
+```verilog
     reg [79:0] shr;             // 10 Bytes SHR code
     reg [6:0] shr_count;        // count whether SHR ends
 ```
@@ -200,6 +200,6 @@
         + [3:0] fcs_count: count from 0 to 15, to output fcs serially
         + tx_out_valid: high active when outputing fcs
 
-```vhdl
+```verilog
     [7:0] data;
 ```
