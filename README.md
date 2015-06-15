@@ -22,7 +22,7 @@
 
 ## 原理分析
 
-### FIFO *First In First Out*
+### FIFO *(First In First Out)*
 
 * 输入端口直接与外部相连，输入数据为`1 Byte @(posedge clk)`;
 
@@ -30,9 +30,31 @@
 
 * 输入输出均有`valid`使能信号;
 
-* 若采用串行输出`1 Bit @(posedge clk)`，由于输入输出速率不匹配，则`FIFO`内部需要一定大小的存储器，防止数据阻塞丢失;
+* 若采用串行输出`1 Bit @(posedge clk)`，由于输入输出速率不匹配，故`FIFO`内部需要一定大小的存储器，防止数据阻塞丢失;
 
 * 若`CRC`模块采用`8 Bits`并行输入，那么`FIFO`模块可以省略;
+
+### CRC *(Cyclic Redundancy Check)*
+
+#### 串入并出
+
+![crc_ss](crc_ss.png)
+
+* 输入数据从低位到高位依次从`TX_DATA`输入，当数据全部输入后，此时对应的`TX_OUT[15:0]`即`CRC`产生的16位`FCS`码;
+
+* 记图中16个D触发器当前状态为`fcs_n[15:0]`，则`fcs_n`状态转移过程如下
+
+```vhdl
+    always @(posedge clk) begin
+        fcs_n <= {fcs_n[0]^TX_DATA, fcs_n[15:12],
+                  fcs_n[11]^fcs_n[0]^TX_DATA, fcs_n[10:5],
+                  fcs_n[4]^fcs_n[0]^TX_DATA, fcs_n[3:1]};
+    end
+```
+
+#### 并入并出
+
+
 
 ## modules
 
