@@ -165,7 +165,7 @@
 
 * 从第一字节数据中获取码长信息
 
-```vhdl
+```verilog
     reg read_data_size;         // high active when a new datastream starts
     reg [7:0] data_size;        // data size got from first Byte
     reg [7:0] send_count;       // count Bytes already sent out, 
