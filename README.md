@@ -181,6 +181,10 @@
     reg [6:0] shr_count;        // count whether SHR ends
 ```
 
+#### 功能仿真
+
+![fifo_test](fifo_test.png)
+
 ### crc
 
 #### 端口
@@ -216,4 +220,42 @@
     reg tx_out_valid;           // high active when outputing fcs
 ```
 
+#### 功能仿真
 
+![crc_test](crc_test.png)
+
+### whiting
+
+#### 端口
+
+```verilog
+    input clk;
+    input reset_n;
+    input tx_data;              // 1 bit data in @(posedge clk)
+    input tx_data_valid;
+    
+    output tx_out;              // 1 bit data out @(posedge clk)
+    output tx_out_valid;
+```
+
+#### 实现机制
+
+* 伪随机序列生成
+
+```verilog
+    reg [8:0] pseudo_rand;      // 9 bits pseudo random sequence
+```
+
+* 接收`SHR`码不白化直接输出
+
+```verilog
+    reg [6:0] shr_count;        // count from 0 to 79
+```
+
+## 
+    
+    
+    
+    
+    
+    
