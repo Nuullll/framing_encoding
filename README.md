@@ -4,7 +4,7 @@
 
 ### 模块接口
 
-![interface](framing_encoding模块接口图.png)
+![interface](interface.png)
 
 ```vhdl
     input clk;
@@ -18,7 +18,7 @@
 
 ### 内部结构
 
-![structure](framing_encoidng模块内部结构图.png)
+![structure](structure.png)
 
 ## 原理分析
 
