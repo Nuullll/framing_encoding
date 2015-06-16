@@ -606,7 +606,7 @@ always @(posedge clk or negedge reset_n) begin
         shr_count <= 0;
         shr <= {16'hF3_98, 64'hAA_AA_AA_AA_AA_AA_AA_AA};
     end else begin
-        if (fifo_input_valid && count < MEMORY_SIZE) begin   // store input data
+        if (fifo_input_valid && count < MEMORY_SIZE) begin  // store input data
             if (read_data_size) begin
                 data_size <= fifo_input;    // first Byte
                 read_data_size <= 0;        // flag off
