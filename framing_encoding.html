@@ -1,0 +1,1859 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>body {
+  width: 45em;
+  border: 1px solid #ddd;
+  outline: 1300px solid #fff;
+  margin: 16px auto;
+}
+
+body .markdown-body
+{
+  padding: 30px;
+}
+
+@font-face {
+  font-family: octicons-anchor;
+  src: url(data:font/woff;charset=utf-8;base64,d09GRgABAAAAAAYcAA0AAAAACjQAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABGRlRNAAABMAAAABwAAAAca8vGTk9TLzIAAAFMAAAARAAAAFZG1VHVY21hcAAAAZAAAAA+AAABQgAP9AdjdnQgAAAB0AAAAAQAAAAEACICiGdhc3AAAAHUAAAACAAAAAj//wADZ2x5ZgAAAdwAAADRAAABEKyikaNoZWFkAAACsAAAAC0AAAA2AtXoA2hoZWEAAALgAAAAHAAAACQHngNFaG10eAAAAvwAAAAQAAAAEAwAACJsb2NhAAADDAAAAAoAAAAKALIAVG1heHAAAAMYAAAAHwAAACABEAB2bmFtZQAAAzgAAALBAAAFu3I9x/Nwb3N0AAAF/AAAAB0AAAAvaoFvbwAAAAEAAAAAzBdyYwAAAADP2IQvAAAAAM/bz7t4nGNgZGFgnMDAysDB1Ml0hoGBoR9CM75mMGLkYGBgYmBlZsAKAtJcUxgcPsR8iGF2+O/AEMPsznAYKMwIkgMA5REMOXicY2BgYGaAYBkGRgYQsAHyGMF8FgYFIM0ChED+h5j//yEk/3KoSgZGNgYYk4GRCUgwMaACRoZhDwCs7QgGAAAAIgKIAAAAAf//AAJ4nHWMMQrCQBBF/0zWrCCIKUQsTDCL2EXMohYGSSmorScInsRGL2DOYJe0Ntp7BK+gJ1BxF1stZvjz/v8DRghQzEc4kIgKwiAppcA9LtzKLSkdNhKFY3HF4lK69ExKslx7Xa+vPRVS43G98vG1DnkDMIBUgFN0MDXflU8tbaZOUkXUH0+U27RoRpOIyCKjbMCVejwypzJJG4jIwb43rfl6wbwanocrJm9XFYfskuVC5K/TPyczNU7b84CXcbxks1Un6H6tLH9vf2LRnn8Ax7A5WQAAAHicY2BkYGAA4teL1+yI57f5ysDNwgAC529f0kOmWRiYVgEpDgYmEA8AUzEKsQAAAHicY2BkYGB2+O/AEMPCAAJAkpEBFbAAADgKAe0EAAAiAAAAAAQAAAAEAAAAAAAAKgAqACoAiAAAeJxjYGRgYGBhsGFgYgABEMkFhAwM/xn0QAIAD6YBhwB4nI1Ty07cMBS9QwKlQapQW3VXySvEqDCZGbGaHULiIQ1FKgjWMxknMfLEke2A+IJu+wntrt/QbVf9gG75jK577Lg8K1qQPCfnnnt8fX1NRC/pmjrk/zprC+8D7tBy9DHgBXoWfQ44Av8t4Bj4Z8CLtBL9CniJluPXASf0Lm4CXqFX8Q84dOLnMB17N4c7tBo1AS/Qi+hTwBH4rwHHwN8DXqQ30XXAS7QaLwSc0Gn8NuAVWou/gFmnjLrEaEh9GmDdDGgL3B4JsrRPDU2hTOiMSuJUIdKQQayiAth69r6akSSFqIJuA19TrzCIaY8sIoxyrNIrL//pw7A2iMygkX5vDj+G+kuoLdX4GlGK/8Lnlz6/h9MpmoO9rafrz7ILXEHHaAx95s9lsI7AHNMBWEZHULnfAXwG9/ZqdzLI08iuwRloXE8kfhXYAvE23+23DU3t626rbs8/8adv+9DWknsHp3E17oCf+Z48rvEQNZ78paYM38qfk3v/u3l3u3GXN2Dmvmvpf1Srwk3pB/VSsp512bA/GG5i2WJ7wu430yQ5K3nFGiOqgtmSB5pJVSizwaacmUZzZhXLlZTq8qGGFY2YcSkqbth6aW1tRmlaCFs2016m5qn36SbJrqosG4uMV4aP2PHBmB3tjtmgN2izkGQyLWprekbIntJFing32a5rKWCN/SdSoga45EJykyQ7asZvHQ8PTm6cslIpwyeyjbVltNikc2HTR7YKh9LBl9DADC0U/jLcBZDKrMhUBfQBvXRzLtFtjU9eNHKin0x5InTqb8lNpfKv1s1xHzTXRqgKzek/mb7nB8RZTCDhGEX3kK/8Q75AmUM/eLkfA+0Hi908Kx4eNsMgudg5GLdRD7a84npi+YxNr5i5KIbW5izXas7cHXIMAau1OueZhfj+cOcP3P8MNIWLyYOBuxL6DRylJ4cAAAB4nGNgYoAALjDJyIAOWMCiTIxMLDmZedkABtIBygAAAA==) format('woff');
+}
+
+.markdown-body {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  color: #333;
+  overflow: hidden;
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  word-wrap: break-word;
+}
+
+.markdown-body a {
+  background: transparent;
+}
+
+.markdown-body a:active,
+.markdown-body a:hover {
+  outline: 0;
+}
+
+.markdown-body strong {
+  font-weight: bold;
+}
+
+.markdown-body h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+.markdown-body img {
+  border: 0;
+}
+
+.markdown-body hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+
+.markdown-body pre {
+  overflow: auto;
+}
+
+.markdown-body code,
+.markdown-body kbd,
+.markdown-body pre {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+.markdown-body input {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+
+.markdown-body html input[disabled] {
+  cursor: default;
+}
+
+.markdown-body input {
+  line-height: normal;
+}
+
+.markdown-body input[type="checkbox"] {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.markdown-body table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.markdown-body td,
+.markdown-body th {
+  padding: 0;
+}
+
+.markdown-body * {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body input {
+  font: 13px/1.4 Helvetica, arial, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.markdown-body a {
+  color: #4183c4;
+  text-decoration: none;
+}
+
+.markdown-body a:hover,
+.markdown-body a:focus,
+.markdown-body a:active {
+  text-decoration: underline;
+}
+
+.markdown-body hr {
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.markdown-body hr:before {
+  display: table;
+  content: "";
+}
+
+.markdown-body hr:after {
+  display: table;
+  clear: both;
+  content: "";
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  line-height: 1.1;
+}
+
+.markdown-body h1 {
+  font-size: 30px;
+}
+
+.markdown-body h2 {
+  font-size: 21px;
+}
+
+.markdown-body h3 {
+  font-size: 16px;
+}
+
+.markdown-body h4 {
+  font-size: 14px;
+}
+
+.markdown-body h5 {
+  font-size: 12px;
+}
+
+.markdown-body h6 {
+  font-size: 11px;
+}
+
+.markdown-body blockquote {
+  margin: 0;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body ol ol,
+.markdown-body ul ol {
+  list-style-type: lower-roman;
+}
+
+.markdown-body ul ul ol,
+.markdown-body ul ol ol,
+.markdown-body ol ul ol,
+.markdown-body ol ol ol {
+  list-style-type: lower-alpha;
+}
+
+.markdown-body dd {
+  margin-left: 0;
+}
+
+.markdown-body code {
+  font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 0;
+  font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+
+.markdown-body .octicon {
+  font: normal normal 16px octicons-anchor;
+  line-height: 1;
+  display: inline-block;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.markdown-body .octicon-link:before {
+  content: '\f05c';
+}
+
+.markdown-body>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+.markdown-body .anchor {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  padding-right: 6px;
+  padding-left: 30px;
+  margin-left: -30px;
+}
+
+.markdown-body .anchor:focus {
+  outline: none;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  position: relative;
+  margin-top: 1em;
+  margin-bottom: 16px;
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+.markdown-body h1 .octicon-link,
+.markdown-body h2 .octicon-link,
+.markdown-body h3 .octicon-link,
+.markdown-body h4 .octicon-link,
+.markdown-body h5 .octicon-link,
+.markdown-body h6 .octicon-link {
+  display: none;
+  color: #000;
+  vertical-align: middle;
+}
+
+.markdown-body h1:hover .anchor,
+.markdown-body h2:hover .anchor,
+.markdown-body h3:hover .anchor,
+.markdown-body h4:hover .anchor,
+.markdown-body h5:hover .anchor,
+.markdown-body h6:hover .anchor {
+  padding-left: 8px;
+  margin-left: -30px;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.markdown-body h1:hover .anchor .octicon-link,
+.markdown-body h2:hover .anchor .octicon-link,
+.markdown-body h3:hover .anchor .octicon-link,
+.markdown-body h4:hover .anchor .octicon-link,
+.markdown-body h5:hover .anchor .octicon-link,
+.markdown-body h6:hover .anchor .octicon-link {
+  display: inline-block;
+}
+
+.markdown-body h1 {
+  padding-bottom: 0.3em;
+  font-size: 2.25em;
+  line-height: 1.2;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h2 {
+  padding-bottom: 0.3em;
+  font-size: 1.75em;
+  line-height: 1.225;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h3 {
+  font-size: 1.5em;
+  line-height: 1.43;
+}
+
+.markdown-body h4 {
+  font-size: 1.25em;
+}
+
+.markdown-body h5 {
+  font-size: 1em;
+}
+
+.markdown-body h6 {
+  font-size: 1em;
+  color: #777;
+}
+
+.markdown-body p,
+.markdown-body blockquote,
+.markdown-body ul,
+.markdown-body ol,
+.markdown-body dl,
+.markdown-body table,
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.markdown-body hr {
+  height: 4px;
+  padding: 0;
+  margin: 16px 0;
+  background-color: #e7e7e7;
+  border: 0 none;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding-left: 2em;
+}
+
+.markdown-body ul ul,
+.markdown-body ul ol,
+.markdown-body ol ol,
+.markdown-body ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body li>p {
+  margin-top: 16px;
+}
+
+.markdown-body dl {
+  padding: 0;
+}
+
+.markdown-body dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.markdown-body dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+
+.markdown-body blockquote {
+  padding: 0 15px;
+  color: #777;
+  border-left: 4px solid #ddd;
+}
+
+.markdown-body blockquote>:first-child {
+  margin-top: 0;
+}
+
+.markdown-body blockquote>:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-body table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  word-break: normal;
+  word-break: keep-all;
+}
+
+.markdown-body table th {
+  font-weight: bold;
+}
+
+.markdown-body table th,
+.markdown-body table td {
+  padding: 6px 13px;
+  border: 1px solid #ddd;
+}
+
+.markdown-body table tr {
+  background-color: #fff;
+  border-top: 1px solid #ccc;
+}
+
+.markdown-body table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+.markdown-body img {
+  max-width: 100%;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body code {
+  padding: 0;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(0,0,0,0.04);
+  border-radius: 3px;
+}
+
+.markdown-body code:before,
+.markdown-body code:after {
+  letter-spacing: -0.2em;
+  content: "\00a0";
+}
+
+.markdown-body pre>code {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+
+.markdown-body .highlight {
+  margin-bottom: 16px;
+}
+
+.markdown-body .highlight pre,
+.markdown-body pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f7f7f7;
+  border-radius: 3px;
+}
+
+.markdown-body .highlight pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+
+.markdown-body pre {
+  word-wrap: normal;
+}
+
+.markdown-body pre code {
+  display: inline;
+  max-width: initial;
+  padding: 0;
+  margin: 0;
+  overflow: initial;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+}
+
+.markdown-body pre code:before,
+.markdown-body pre code:after {
+  content: normal;
+}
+
+.markdown-body .highlight {
+  background: #fff;
+}
+
+.markdown-body .highlight .h {
+  color: #333;
+  font-style: normal;
+  font-weight: normal;
+}
+
+.markdown-body .highlight .mf,
+.markdown-body .highlight .mh,
+.markdown-body .highlight .mi,
+.markdown-body .highlight .mo,
+.markdown-body .highlight .il,
+.markdown-body .highlight .m {
+  color: #945277;
+}
+
+.markdown-body .highlight .s,
+.markdown-body .highlight .sb,
+.markdown-body .highlight .sc,
+.markdown-body .highlight .sd,
+.markdown-body .highlight .s2,
+.markdown-body .highlight .se,
+.markdown-body .highlight .sh,
+.markdown-body .highlight .si,
+.markdown-body .highlight .sx,
+.markdown-body .highlight .s1 {
+  color: #df5000;
+}
+
+.markdown-body .highlight .kc,
+.markdown-body .highlight .kd,
+.markdown-body .highlight .kn,
+.markdown-body .highlight .kp,
+.markdown-body .highlight .kr,
+.markdown-body .highlight .kt,
+.markdown-body .highlight .k,
+.markdown-body .highlight .o {
+  font-weight: bold;
+}
+
+.markdown-body .highlight .kt {
+  color: #458;
+}
+
+.markdown-body .highlight .c,
+.markdown-body .highlight .cm,
+.markdown-body .highlight .c1 {
+  color: #998;
+  font-style: italic;
+}
+
+.markdown-body .highlight .cp,
+.markdown-body .highlight .cs,
+.markdown-body .highlight .cp .h {
+  color: #999;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .cs {
+  font-style: italic;
+}
+
+.markdown-body .highlight .n {
+  color: #333;
+}
+
+.markdown-body .highlight .na,
+.markdown-body .highlight .nv,
+.markdown-body .highlight .vc,
+.markdown-body .highlight .vg,
+.markdown-body .highlight .vi {
+  color: #008080;
+}
+
+.markdown-body .highlight .nb {
+  color: #0086B3;
+}
+
+.markdown-body .highlight .nc {
+  color: #458;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .no {
+  color: #094e99;
+}
+
+.markdown-body .highlight .ni {
+  color: #800080;
+}
+
+.markdown-body .highlight .ne {
+  color: #990000;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .nf {
+  color: #945277;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .nn {
+  color: #555;
+}
+
+.markdown-body .highlight .nt {
+  color: #000080;
+}
+
+.markdown-body .highlight .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+
+.markdown-body .highlight .gd {
+  color: #000;
+  background-color: #fdd;
+}
+
+.markdown-body .highlight .gd .x {
+  color: #000;
+  background-color: #faa;
+}
+
+.markdown-body .highlight .ge {
+  font-style: italic;
+}
+
+.markdown-body .highlight .gr {
+  color: #aa0000;
+}
+
+.markdown-body .highlight .gh {
+  color: #999;
+}
+
+.markdown-body .highlight .gi {
+  color: #000;
+  background-color: #dfd;
+}
+
+.markdown-body .highlight .gi .x {
+  color: #000;
+  background-color: #afa;
+}
+
+.markdown-body .highlight .go {
+  color: #888;
+}
+
+.markdown-body .highlight .gp {
+  color: #555;
+}
+
+.markdown-body .highlight .gs {
+  font-weight: bold;
+}
+
+.markdown-body .highlight .gu {
+  color: #800080;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .gt {
+  color: #aa0000;
+}
+
+.markdown-body .highlight .ow {
+  font-weight: bold;
+}
+
+.markdown-body .highlight .w {
+  color: #bbb;
+}
+
+.markdown-body .highlight .sr {
+  color: #017936;
+}
+
+.markdown-body .highlight .ss {
+  color: #8b467f;
+}
+
+.markdown-body .highlight .bp {
+  color: #999;
+}
+
+.markdown-body .highlight .gc {
+  color: #999;
+  background-color: #EAF2F5;
+}
+
+.markdown-body kbd {
+  background-color: #e7e7e7;
+  background-image: -webkit-linear-gradient(#fefefe, #e7e7e7);
+  background-image: linear-gradient(#fefefe, #e7e7e7);
+  background-repeat: repeat-x;
+  display: inline-block;
+  padding: 3px 5px;
+  font: 11px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  line-height: 10px;
+  color: #000;
+  border: 1px solid #cfcfcf;
+  border-radius: 2px;
+}
+
+.markdown-body .highlight .pl-coc,
+.markdown-body .highlight .pl-entm,
+.markdown-body .highlight .pl-eoa,
+.markdown-body .highlight .pl-mai .pl-sf,
+.markdown-body .highlight .pl-pdv,
+.markdown-body .highlight .pl-sc,
+.markdown-body .highlight .pl-sr,
+.markdown-body .highlight .pl-v,
+.markdown-body .highlight .pl-vpf {
+  color: #0086b3;
+}
+
+.markdown-body .highlight .pl-eoac,
+.markdown-body .highlight .pl-mdht,
+.markdown-body .highlight .pl-mi1,
+.markdown-body .highlight .pl-mri,
+.markdown-body .highlight .pl-va,
+.markdown-body .highlight .pl-vpu {
+  color: #008080;
+}
+
+.markdown-body .highlight .pl-c,
+.markdown-body .highlight .pl-pdc {
+  color: #b4b7b4;
+  font-style: italic;
+}
+
+.markdown-body .highlight .pl-k,
+.markdown-body .highlight .pl-ko,
+.markdown-body .highlight .pl-kolp,
+.markdown-body .highlight .pl-mc,
+.markdown-body .highlight .pl-mr,
+.markdown-body .highlight .pl-ms,
+.markdown-body .highlight .pl-s,
+.markdown-body .highlight .pl-sok,
+.markdown-body .highlight .pl-st {
+  color: #6e5494;
+}
+
+.markdown-body .highlight .pl-ef,
+.markdown-body .highlight .pl-enf,
+.markdown-body .highlight .pl-enm,
+.markdown-body .highlight .pl-entc,
+.markdown-body .highlight .pl-eoi,
+.markdown-body .highlight .pl-sf,
+.markdown-body .highlight .pl-smc {
+  color: #d12089;
+}
+
+.markdown-body .highlight .pl-ens,
+.markdown-body .highlight .pl-eoai,
+.markdown-body .highlight .pl-kos,
+.markdown-body .highlight .pl-mh .pl-pdh,
+.markdown-body .highlight .pl-mp,
+.markdown-body .highlight .pl-pde,
+.markdown-body .highlight .pl-stp {
+  color: #458;
+}
+
+.markdown-body .highlight .pl-enti {
+  color: #d12089;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .pl-cce,
+.markdown-body .highlight .pl-enc,
+.markdown-body .highlight .pl-kou,
+.markdown-body .highlight .pl-mq {
+  color: #f93;
+}
+
+.markdown-body .highlight .pl-mp1 .pl-sf {
+  color: #458;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .pl-cos,
+.markdown-body .highlight .pl-ent,
+.markdown-body .highlight .pl-md,
+.markdown-body .highlight .pl-mdhf,
+.markdown-body .highlight .pl-ml,
+.markdown-body .highlight .pl-pdc1,
+.markdown-body .highlight .pl-pds,
+.markdown-body .highlight .pl-s1,
+.markdown-body .highlight .pl-scp,
+.markdown-body .highlight .pl-sol {
+  color: #df5000;
+}
+
+.markdown-body .highlight .pl-c1,
+.markdown-body .highlight .pl-cn,
+.markdown-body .highlight .pl-pse,
+.markdown-body .highlight .pl-pse .pl-s2,
+.markdown-body .highlight .pl-vi {
+  color: #a31515;
+}
+
+.markdown-body .highlight .pl-mb,
+.markdown-body .highlight .pl-pdb {
+  color: #df5000;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .pl-mi,
+.markdown-body .highlight .pl-pdi {
+  color: #6e5494;
+  font-style: italic;
+}
+
+.markdown-body .highlight .pl-ms1 {
+  background-color: #f5f5f5;
+}
+
+.markdown-body .highlight .pl-mdh,
+.markdown-body .highlight .pl-mdi {
+  font-weight: bold;
+}
+
+.markdown-body .highlight .pl-mdr {
+  color: #0086b3;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .pl-s2 {
+  color: #333;
+}
+
+.markdown-body .highlight .pl-ii {
+  background-color: #df5000;
+  color: #fff;
+}
+
+.markdown-body .highlight .pl-ib {
+  background-color: #f93;
+}
+
+.markdown-body .highlight .pl-id {
+  background-color: #a31515;
+  color: #fff;
+}
+
+.markdown-body .highlight .pl-iu {
+  background-color: #b4b7b4;
+}
+
+.markdown-body .highlight .pl-mo {
+  color: #969896;
+}
+
+.markdown-body .task-list-item {
+  list-style-type: none;
+}
+
+.markdown-body .task-list-item+.task-list-item {
+  margin-top: 3px;
+}
+
+.markdown-body .task-list-item input {
+  float: left;
+  margin: 0.3em 0 0.25em -1.6em;
+  vertical-align: middle;
+}</style><title>README</title></head><body><article class="markdown-body"><h1>
+<a id="user-content-物理层组帧编码-framing_encoding" class="anchor" href="#%E7%89%A9%E7%90%86%E5%B1%82%E7%BB%84%E5%B8%A7%E7%BC%96%E7%A0%81-framing_encoding" aria-hidden="true"><span class="octicon octicon-link"></span></a>物理层组帧编码 <em>framing_encoding</em>
+</h1>
+
+<h2>
+<a id="user-content-编码结构" class="anchor" href="#%E7%BC%96%E7%A0%81%E7%BB%93%E6%9E%84" aria-hidden="true"><span class="octicon octicon-link"></span></a>编码结构</h2>
+
+<p><a href="/Users/lisihan969/src/projects/framing_encoding/encoding_structure.png" target="_blank"><img src="/Users/lisihan969/src/projects/framing_encoding/encoding_structure.png" alt="encoding_structure" style="max-width:100%;"></a></p>
+
+<h2>
+<a id="user-content-顶层设计" class="anchor" href="#%E9%A1%B6%E5%B1%82%E8%AE%BE%E8%AE%A1" aria-hidden="true"><span class="octicon octicon-link"></span></a>顶层设计</h2>
+
+<h3>
+<a id="user-content-模块接口" class="anchor" href="#%E6%A8%A1%E5%9D%97%E6%8E%A5%E5%8F%A3" aria-hidden="true"><span class="octicon octicon-link"></span></a>模块接口</h3>
+
+<p><a href="/Users/lisihan969/src/projects/framing_encoding/interface.png" target="_blank"><img src="/Users/lisihan969/src/projects/framing_encoding/interface.png" alt="interface" style="max-width:100%;"></a></p>
+
+<div class="highlight highlight-verilog"><pre>    <span class="pl-k">input</span> clk;
+    <span class="pl-k">input</span> reset_n;
+    <span class="pl-k">input</span> [<span class="pl-c1">7</span>:<span class="pl-c1">0</span>] phr_psdu_in;
+    <span class="pl-k">input</span> phr_psdu_in_valid;
+
+    <span class="pl-k">output</span> framing_encoding_out;
+    <span class="pl-k">output</span> framing_encoding_out_valid;</pre></div>
+
+<h3>
+<a id="user-content-内部结构" class="anchor" href="#%E5%86%85%E9%83%A8%E7%BB%93%E6%9E%84" aria-hidden="true"><span class="octicon octicon-link"></span></a>内部结构</h3>
+
+<p><a href="/Users/lisihan969/src/projects/framing_encoding/structure.png" target="_blank"><img src="/Users/lisihan969/src/projects/framing_encoding/structure.png" alt="structure" style="max-width:100%;"></a></p>
+
+<h2>
+<a id="user-content-原理分析" class="anchor" href="#%E5%8E%9F%E7%90%86%E5%88%86%E6%9E%90" aria-hidden="true"><span class="octicon octicon-link"></span></a>原理分析</h2>
+
+<h3>
+<a id="user-content-fifo-first-in-first-out" class="anchor" href="#fifo-first-in-first-out" aria-hidden="true"><span class="octicon octicon-link"></span></a>FIFO <em>(First In First Out)</em>
+</h3>
+
+<ul>
+<li><p>输入端口直接与外部相连，输入数据为<code>1 Byte @(posedge clk)</code>;</p></li>
+<li><p>输出端口与下级模块<code>CRC</code>相连，具体输出形式依赖于<code>CRC</code>模块采用<em>串行输入</em>or<em>并行输入</em>;</p></li>
+<li><p>输入输出均有<code>valid</code>使能信号;</p></li>
+<li><p>若采用串行输出<code>1 Bit @(posedge clk)</code>，由于输入输出速率不匹配，故<code>FIFO</code>内部需要一定大小的存储器，防止数据阻塞丢失;</p></li>
+<li><p>若<code>CRC</code>模块采用<code>8 Bits</code>并行输入，那么<code>FIFO</code>模块可以省略;</p></li>
+</ul>
+
+<h3>
+<a id="user-content-crc-cyclic-redundancy-check" class="anchor" href="#crc-cyclic-redundancy-check" aria-hidden="true"><span class="octicon octicon-link"></span></a>CRC <em>(Cyclic Redundancy Check)</em>
+</h3>
+
+<h4>
+<a id="user-content-串入并出" class="anchor" href="#%E4%B8%B2%E5%85%A5%E5%B9%B6%E5%87%BA" aria-hidden="true"><span class="octicon octicon-link"></span></a>串入并出</h4>
+
+<p><a href="/Users/lisihan969/src/projects/framing_encoding/crc_sp.png" target="_blank"><img src="/Users/lisihan969/src/projects/framing_encoding/crc_sp.png" alt="crc_sp" style="max-width:100%;"></a></p>
+
+<ul>
+<li><p>输入数据从低位到高位依次从<code>TX_DATA</code>输入，当数据全部输入后，此时对应的<code>TX_OUT[15:0]</code>即<code>CRC</code>产生的16位<code>FCS</code>码;</p></li>
+<li><p>记图中16个D触发器当前状态为<code>fcs_n[15:0]</code>，则<code>fcs_n</code>状态转移过程如下</p></li>
+</ul>
+
+<div class="highlight highlight-verilog"><pre>    <span class="pl-k">always</span> @(<span class="pl-k">posedge</span> clk) <span class="pl-k">begin</span>
+        fcs_n <span class="pl-k">&lt;=</span> {fcs_n[<span class="pl-c1">0</span>]^TX_DATA, fcs_n[<span class="pl-c1">15</span>:<span class="pl-c1">12</span>],
+                  fcs_n[<span class="pl-c1">11</span>]^fcs_n[<span class="pl-c1">0</span>]^TX_DATA, fcs_n[<span class="pl-c1">10</span>:<span class="pl-c1">5</span>],
+                  fcs_n[<span class="pl-c1">4</span>]^fcs_n[<span class="pl-c1">0</span>]^TX_DATA, fcs_n[<span class="pl-c1">3</span>:<span class="pl-c1">1</span>]};
+    <span class="pl-k">end</span>
+
+    <span class="pl-k">assign</span> TX_OUT <span class="pl-k">=</span> <span class="pl-k">~</span>fcs_n;</pre></div>
+
+<h4>
+<a id="user-content-并入并出" class="anchor" href="#%E5%B9%B6%E5%85%A5%E5%B9%B6%E5%87%BA" aria-hidden="true"><span class="octicon octicon-link"></span></a>并入并出</h4>
+
+<ul>
+<li>根据串入并出可推导出，输入<code>8 Bits</code>数据后，<code>fcs_n</code>的变化：</li>
+</ul>
+
+<div class="highlight highlight-verilog"><pre>    <span class="pl-k">always</span> @(<span class="pl-k">posedge</span> clk) <span class="pl-k">begin</span>
+        fcs_n1 <span class="pl-k">&lt;=</span> {fcs_n[<span class="pl-c1">0</span>]^TX_DATA[<span class="pl-c1">0</span>], fcs_n[<span class="pl-c1">15</span>:<span class="pl-c1">12</span>],
+                   fcs_n[<span class="pl-c1">11</span>]^fcs_n[<span class="pl-c1">0</span>]^TX_DATA[<span class="pl-c1">0</span>], fcs_n[<span class="pl-c1">10</span>:<span class="pl-c1">5</span>],
+                   fcs_n[<span class="pl-c1">4</span>]^fcs_n[<span class="pl-c1">0</span>]^TX_DATA[<span class="pl-c1">0</span>], fcs_n[<span class="pl-c1">3</span>:<span class="pl-c1">1</span>]};
+        fcs_n2 <span class="pl-k">&lt;=</span> {fcs_n1[<span class="pl-c1">0</span>]^TX_DATA[<span class="pl-c1">1</span>], fcs_n1[<span class="pl-c1">15</span>:<span class="pl-c1">12</span>],
+                   fcs_n1[<span class="pl-c1">11</span>]^fcs_n1[<span class="pl-c1">0</span>]^TX_DATA[<span class="pl-c1">1</span>], fcs_n1[<span class="pl-c1">10</span>:<span class="pl-c1">5</span>],
+                   fcs_n1[<span class="pl-c1">4</span>]^fcs_n1[<span class="pl-c1">0</span>]^TX_DATA[<span class="pl-c1">1</span>], fcs_n1[<span class="pl-c1">3</span>:<span class="pl-c1">1</span>]};
+        fcs_n3 <span class="pl-k">&lt;=</span> {fcs_n2[<span class="pl-c1">0</span>]^TX_DATA[<span class="pl-c1">2</span>], fcs_n2[<span class="pl-c1">15</span>:<span class="pl-c1">12</span>],
+                   fcs_n2[<span class="pl-c1">11</span>]^fcs_n2[<span class="pl-c1">0</span>]^TX_DATA[<span class="pl-c1">2</span>], fcs_n2[<span class="pl-c1">10</span>:<span class="pl-c1">5</span>],
+                   fcs_n2[<span class="pl-c1">4</span>]^fcs_n2[<span class="pl-c1">0</span>]^TX_DATA[<span class="pl-c1">2</span>], fcs_n2[<span class="pl-c1">3</span>:<span class="pl-c1">1</span>]};
+        fcs_n4 <span class="pl-k">&lt;=</span> {fcs_n3[<span class="pl-c1">0</span>]^TX_DATA[<span class="pl-c1">3</span>], fcs_n3[<span class="pl-c1">15</span>:<span class="pl-c1">12</span>],
+                   fcs_n3[<span class="pl-c1">11</span>]^fcs_n3[<span class="pl-c1">0</span>]^TX_DATA[<span class="pl-c1">3</span>], fcs_n3[<span class="pl-c1">10</span>:<span class="pl-c1">5</span>],
+                   fcs_n3[<span class="pl-c1">4</span>]^fcs_n3[<span class="pl-c1">0</span>]^TX_DATA[<span class="pl-c1">3</span>], fcs_n3[<span class="pl-c1">3</span>:<span class="pl-c1">1</span>]};
+        fcs_n5 <span class="pl-k">&lt;=</span> {fcs_n4[<span class="pl-c1">0</span>]^TX_DATA[<span class="pl-c1">4</span>], fcs_n4[<span class="pl-c1">15</span>:<span class="pl-c1">12</span>],
+                   fcs_n4[<span class="pl-c1">11</span>]^fcs_n4[<span class="pl-c1">0</span>]^TX_DATA[<span class="pl-c1">4</span>], fcs_n4[<span class="pl-c1">10</span>:<span class="pl-c1">5</span>],
+                   fcs_n4[<span class="pl-c1">4</span>]^fcs_n4[<span class="pl-c1">0</span>]^TX_DATA[<span class="pl-c1">4</span>], fcs_n4[<span class="pl-c1">3</span>:<span class="pl-c1">1</span>]};
+        fcs_n6 <span class="pl-k">&lt;=</span> {fcs_n5[<span class="pl-c1">0</span>]^TX_DATA[<span class="pl-c1">5</span>], fcs_n5[<span class="pl-c1">15</span>:<span class="pl-c1">12</span>],
+                   fcs_n5[<span class="pl-c1">11</span>]^fcs_n5[<span class="pl-c1">0</span>]^TX_DATA[<span class="pl-c1">5</span>], fcs_n5[<span class="pl-c1">10</span>:<span class="pl-c1">5</span>],
+                   fcs_n5[<span class="pl-c1">4</span>]^fcs_n5[<span class="pl-c1">0</span>]^TX_DATA[<span class="pl-c1">5</span>], fcs_n5[<span class="pl-c1">3</span>:<span class="pl-c1">1</span>]};
+        fcs_n7 <span class="pl-k">&lt;=</span> {fcs_n6[<span class="pl-c1">0</span>]^TX_DATA[<span class="pl-c1">6</span>], fcs_n6[<span class="pl-c1">15</span>:<span class="pl-c1">12</span>],
+                   fcs_n6[<span class="pl-c1">11</span>]^fcs_n6[<span class="pl-c1">0</span>]^TX_DATA[<span class="pl-c1">6</span>], fcs_n6[<span class="pl-c1">10</span>:<span class="pl-c1">5</span>],
+                   fcs_n6[<span class="pl-c1">4</span>]^fcs_n6[<span class="pl-c1">0</span>]^TX_DATA[<span class="pl-c1">6</span>], fcs_n6[<span class="pl-c1">3</span>:<span class="pl-c1">1</span>]};
+        fcs_n <span class="pl-k">&lt;=</span> {fcs_n7[<span class="pl-c1">0</span>]^TX_DATA[<span class="pl-c1">7</span>], fcs_n7[<span class="pl-c1">15</span>:<span class="pl-c1">12</span>],
+                  fcs_n7[<span class="pl-c1">11</span>]^fcs_n7[<span class="pl-c1">0</span>]^TX_DATA[<span class="pl-c1">7</span>], fcs_n7[<span class="pl-c1">10</span>:<span class="pl-c1">5</span>],
+                  fcs_n7[<span class="pl-c1">4</span>]^fcs_n7[<span class="pl-c1">0</span>]^TX_DATA[<span class="pl-c1">7</span>], fcs_n7[<span class="pl-c1">3</span>:<span class="pl-c1">1</span>]};
+    <span class="pl-k">end</span>
+
+    <span class="pl-k">assign</span> TX_OUT <span class="pl-k">=</span> <span class="pl-k">~</span>fcs_n;</pre></div>
+
+<h4>
+<a id="user-content-串行输出" class="anchor" href="#%E4%B8%B2%E8%A1%8C%E8%BE%93%E5%87%BA" aria-hidden="true"><span class="octicon octicon-link"></span></a>串行输出</h4>
+
+<ul>
+<li>只需在产生并行结果<code>TX_OUT[15:0]</code>后，进行移位输出即可;</li>
+</ul>
+
+<h3>
+<a id="user-content-data-whiting" class="anchor" href="#data-whiting" aria-hidden="true"><span class="octicon octicon-link"></span></a>Data Whiting</h3>
+
+<h4>
+<a id="user-content-串入并出-1" class="anchor" href="#%E4%B8%B2%E5%85%A5%E5%B9%B6%E5%87%BA-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>串入并出</h4>
+
+<p><a href="/Users/lisihan969/src/projects/framing_encoding/whiting_sp.png" target="_blank"><img src="/Users/lisihan969/src/projects/framing_encoding/whiting_sp.png" alt="whiting_sp" style="max-width:100%;"></a></p>
+
+<h4>
+<a id="user-content-串入串出" class="anchor" href="#%E4%B8%B2%E5%85%A5%E4%B8%B2%E5%87%BA" aria-hidden="true"><span class="octicon octicon-link"></span></a>串入串出</h4>
+
+<ul>
+<li>输入数据直接与当前伪随机序列的最低位异或，得到的结果即输出数据;</li>
+</ul>
+
+<div class="highlight highlight-verilog"><pre>    <span class="pl-k">assign</span> TX_OUT <span class="pl-k">=</span> pseudo_rand[<span class="pl-c1">0</span>] ^ TX_DATA;</pre></div>
+
+<ul>
+<li>伪随机序列<code>pseudo_rand[8:0]</code>演化过程如下</li>
+</ul>
+
+<div class="highlight highlight-verilog"><pre>    <span class="pl-k">always</span> @(<span class="pl-k">posedge</span> clk) <span class="pl-k">begin</span>
+        pseudo_rand <span class="pl-k">&lt;=</span> {pseudo_rand[<span class="pl-c1">5</span>]^pseudo_rand[<span class="pl-c1">0</span>], pseudo_rand[<span class="pl-c1">8</span>:<span class="pl-c1">1</span>]};
+    <span class="pl-k">end</span></pre></div>
+
+<h3>
+<a id="user-content-综合考虑" class="anchor" href="#%E7%BB%BC%E5%90%88%E8%80%83%E8%99%91" aria-hidden="true"><span class="octicon octicon-link"></span></a>综合考虑</h3>
+
+<ul>
+<li><p>由于输入<code>8 Bits @(posedge clk)</code>与输出<code>1 Bit @(posedge clk)</code>的不匹配，各模块之间用并行方式进行连接只能为<code>CRC</code>和<code>WHITING</code>提速，从整体上看，最终并转串总会使输出速率降低;</p></li>
+<li><p>因此尝试在各模块之间用串行信号通信（串入串出白化编码模块较易实现）
+<a href="/Users/lisihan969/src/projects/framing_encoding/final_structure.png" target="_blank"><img src="/Users/lisihan969/src/projects/framing_encoding/final_structure.png" alt="final_structure" style="max-width:100%;"></a></p></li>
+<li>
+<p>编码过程：</p>
+
+<ol>
+<li><p><code>FIFO</code>接收输入数据，存于存储器，一旦检测到有数据输入则开始串行输出编码的<code>80 Bits SHR</code>部分，<code>SHR</code>输出完毕后紧接着串行输出<code>PHR</code>和<code>PSDU</code>，此过程中<code>fifo_output_valid</code>有效;</p></li>
+<li><p><code>WHITING</code>在<code>fifo_output_valid</code>有效时接收<code>FIFO</code>输出的<code>{SHR, PHR, PSDU}</code>，接收<code>SHR</code>时<code>WHITING</code>相当于<code>buffer</code>，接收<code>{PHR, PSDU}</code>时从低位开始逐位白化;</p></li>
+<li><p><code>CRC</code>在<code>fifo_output_valid</code>有效时接收<code>FIFO</code>输出的<code>{SHR, PHR, PSDU}</code>，接收<code>SHR</code>时无操作，接收<code>{PHR, PSDU}</code>开始计算<code>FCS</code>，当<code>fifo_output_valid</code>无效时<code>FCS</code>计算完成，开始串行输出，<code>crc_output_valid</code>有效;</p></li>
+<li><p><code>WHITING</code>在<code>crc_output_valid</code>有效时接收<code>CRC</code>输出串行<code>FCS</code>编码，此时<code>{PHR, PSDU}</code>正好白化完成并已输出，紧接着对<code>FCS</code>逐位白化，白化完成即整个编码过程结束;</p></li>
+</ol>
+</li>
+</ul>
+
+<h2>
+<a id="user-content-模块实现" class="anchor" href="#%E6%A8%A1%E5%9D%97%E5%AE%9E%E7%8E%B0" aria-hidden="true"><span class="octicon octicon-link"></span></a>模块实现</h2>
+
+<h3>
+<a id="user-content-fifo" class="anchor" href="#fifo" aria-hidden="true"><span class="octicon octicon-link"></span></a>fifo</h3>
+
+<h4>
+<a id="user-content-端口" class="anchor" href="#%E7%AB%AF%E5%8F%A3" aria-hidden="true"><span class="octicon octicon-link"></span></a>端口</h4>
+
+<div class="highlight highlight-verilog"><pre>    <span class="pl-k">input</span> clk;                  <span class="pl-c">// 10kHz</span>
+    <span class="pl-k">input</span> reset_n;              <span class="pl-c">// low active</span>
+    <span class="pl-k">input</span> [<span class="pl-c1">7</span>:<span class="pl-c1">0</span>] fifo_input;     <span class="pl-c">// 1 Byte data in @(posedge clk)</span>
+    <span class="pl-k">input</span> fifo_input_valid;     <span class="pl-c">// high active</span>
+
+    <span class="pl-k">output</span> fifo_output;         <span class="pl-c">// 1 bit data out @(posedge clk)</span>
+    <span class="pl-k">output</span> fifo_output_valid;   <span class="pl-c">// high active</span></pre></div>
+
+<h4>
+<a id="user-content-实现机制" class="anchor" href="#%E5%AE%9E%E7%8E%B0%E6%9C%BA%E5%88%B6" aria-hidden="true"><span class="octicon octicon-link"></span></a>实现机制</h4>
+
+<ul>
+<li>存储器解决进出速率不匹配问题</li>
+</ul>
+
+<div class="highlight highlight-verilog"><pre>    <span class="pl-k">reg</span> [<span class="pl-c1">7</span>:<span class="pl-c1">0</span>] memory [<span class="pl-c1">7</span>:<span class="pl-c1">0</span>];     <span class="pl-c">// 8 Bytes memory</span>
+    <span class="pl-k">reg</span> [<span class="pl-c1">2</span>:<span class="pl-c1">0</span>] count;            <span class="pl-c">// count Bytes already stored in memory</span>
+    <span class="pl-k">reg</span> [<span class="pl-c1">2</span>:<span class="pl-c1">0</span>] col, read_row;    <span class="pl-c">// point to bit memory ready to output</span>
+    <span class="pl-k">reg</span> [<span class="pl-c1">2</span>:<span class="pl-c1">0</span>] write_row;        <span class="pl-c">// point to next empty row in memory</span>
+                                <span class="pl-c">// for storing input data</span></pre></div>
+
+<ul>
+<li>从第一字节数据中获取码长信息</li>
+</ul>
+
+<div class="highlight highlight-verilog"><pre>    <span class="pl-k">reg</span> read_data_size;         <span class="pl-c">// high active when a new datastream starts</span>
+    <span class="pl-k">reg</span> [<span class="pl-c1">7</span>:<span class="pl-c1">0</span>] data_size;        <span class="pl-c">// data size got from first Byte</span>
+    <span class="pl-k">reg</span> [<span class="pl-c1">7</span>:<span class="pl-c1">0</span>] send_count;       <span class="pl-c">// count Bytes already sent out, </span>
+                                <span class="pl-c">// when send_count == data_size, </span>
+                                <span class="pl-c">// read_data_size turns into high active</span></pre></div>
+
+<ul>
+<li>组合<code>SHR</code>编码，先输出<code>SHR</code>，再输出<code>PHR</code>和<code>PSDU</code>
+</li>
+</ul>
+
+<div class="highlight highlight-verilog"><pre>    <span class="pl-k">reg</span> [<span class="pl-c1">79</span>:<span class="pl-c1">0</span>] shr;             <span class="pl-c">// 10 Bytes SHR code</span>
+    <span class="pl-k">reg</span> [<span class="pl-c1">6</span>:<span class="pl-c1">0</span>] shr_count;        <span class="pl-c">// count whether SHR ends</span></pre></div>
+
+<h4>
+<a id="user-content-功能仿真" class="anchor" href="#%E5%8A%9F%E8%83%BD%E4%BB%BF%E7%9C%9F" aria-hidden="true"><span class="octicon octicon-link"></span></a>功能仿真</h4>
+
+<p><a href="/Users/lisihan969/src/projects/framing_encoding/fifo_test.png" target="_blank"><img src="/Users/lisihan969/src/projects/framing_encoding/fifo_test.png" alt="fifo_test" style="max-width:100%;"></a></p>
+
+<h3>
+<a id="user-content-crc" class="anchor" href="#crc" aria-hidden="true"><span class="octicon octicon-link"></span></a>crc</h3>
+
+<h4>
+<a id="user-content-端口-1" class="anchor" href="#%E7%AB%AF%E5%8F%A3-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>端口</h4>
+
+<div class="highlight highlight-verilog"><pre>    <span class="pl-k">input</span> clk;
+    <span class="pl-k">input</span> reset_n;
+    <span class="pl-k">input</span> tx_data;              <span class="pl-c">// 1 bit data in @(posedge clk)</span>
+    <span class="pl-k">input</span> tx_data_valid;
+
+    <span class="pl-k">output</span> tx_out;              <span class="pl-c">// 1 bit data out @(posedge clk)</span>
+    <span class="pl-k">output</span> tx_out_valid;</pre></div>
+
+<h4>
+<a id="user-content-实现机制-1" class="anchor" href="#%E5%AE%9E%E7%8E%B0%E6%9C%BA%E5%88%B6-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>实现机制</h4>
+
+<ul>
+<li>串行输入含<code>SHR</code>的数据</li>
+</ul>
+
+<div class="highlight highlight-verilog"><pre>    <span class="pl-k">reg</span> [<span class="pl-c1">6</span>:<span class="pl-c1">0</span>] shr_count;        <span class="pl-c">// count from 0 to 79, to count SHR</span></pre></div>
+
+<ul>
+<li>16个D触发器实现<code>FCS</code>码计算</li>
+</ul>
+
+<div class="highlight highlight-verilog"><pre>    <span class="pl-k">reg</span> [<span class="pl-c1">15</span>:<span class="pl-c1">0</span>] fcs_n;           <span class="pl-c">// keep refreshing until tx_data_valid -&gt; low</span></pre></div>
+
+<ul>
+<li>串行输出</li>
+</ul>
+
+<div class="highlight highlight-verilog"><pre>    <span class="pl-k">reg</span> [<span class="pl-c1">3</span>:<span class="pl-c1">0</span>] fcs_count;        <span class="pl-c">// count from 0 to 15, to output fcs serially</span>
+    <span class="pl-k">reg</span> tx_out_valid;           <span class="pl-c">// high active when outputing fcs</span></pre></div>
+
+<h4>
+<a id="user-content-功能仿真-1" class="anchor" href="#%E5%8A%9F%E8%83%BD%E4%BB%BF%E7%9C%9F-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>功能仿真</h4>
+
+<p><a href="/Users/lisihan969/src/projects/framing_encoding/crc_test.png" target="_blank"><img src="/Users/lisihan969/src/projects/framing_encoding/crc_test.png" alt="crc_test" style="max-width:100%;"></a></p>
+
+<h3>
+<a id="user-content-whiting" class="anchor" href="#whiting" aria-hidden="true"><span class="octicon octicon-link"></span></a>whiting</h3>
+
+<h4>
+<a id="user-content-端口-2" class="anchor" href="#%E7%AB%AF%E5%8F%A3-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>端口</h4>
+
+<div class="highlight highlight-verilog"><pre>    <span class="pl-k">input</span> clk;
+    <span class="pl-k">input</span> reset_n;
+    <span class="pl-k">input</span> tx_data;              <span class="pl-c">// 1 bit data in @(posedge clk)</span>
+    <span class="pl-k">input</span> tx_data_valid;
+
+    <span class="pl-k">output</span> tx_out;              <span class="pl-c">// 1 bit data out @(posedge clk)</span>
+    <span class="pl-k">output</span> tx_out_valid;</pre></div>
+
+<h4>
+<a id="user-content-实现机制-2" class="anchor" href="#%E5%AE%9E%E7%8E%B0%E6%9C%BA%E5%88%B6-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>实现机制</h4>
+
+<ul>
+<li>伪随机序列生成</li>
+</ul>
+
+<div class="highlight highlight-verilog"><pre>    <span class="pl-k">reg</span> [<span class="pl-c1">8</span>:<span class="pl-c1">0</span>] pseudo_rand;      <span class="pl-c">// 9 bits pseudo random sequence</span></pre></div>
+
+<ul>
+<li>接收<code>SHR</code>码不白化直接输出</li>
+</ul>
+
+<div class="highlight highlight-verilog"><pre>    <span class="pl-k">reg</span> [<span class="pl-c1">6</span>:<span class="pl-c1">0</span>] shr_count;        <span class="pl-c">// count from 0 to 79</span></pre></div>
+
+<h2>
+<a id="user-content-nc仿真" class="anchor" href="#nc%E4%BB%BF%E7%9C%9F" aria-hidden="true"><span class="octicon octicon-link"></span></a>NC仿真</h2>
+
+<p><a href="/Users/lisihan969/src/projects/framing_encoding/wave.png" target="_blank"><img src="/Users/lisihan969/src/projects/framing_encoding/wave.png" alt="wave" style="max-width:100%;"></a></p>
+
+<p>输出结果<strong>正确</strong></p>
+
+<h2>
+<a id="user-content-dc综合" class="anchor" href="#dc%E7%BB%BC%E5%90%88" aria-hidden="true"><span class="octicon octicon-link"></span></a>DC综合</h2>
+
+<pre><code>****************************************
+
+Library(s) Used:
+
+    typical (File: /soft1/course_lib_umc18/tt_1v8_25c.db)
+
+Number of ports:               13
+Number of nets:                19
+Number of cells:                4
+Number of references:           4
+
+Combinational area:       10857.369742
+Noncombinational area:    16306.012917
+Net Interconnect area:    104627.203186
+
+Total cell area:          27163.382659
+Total area:               131790.585845
+
+****************************************
+Report : area
+Design : framing_encoding
+Version: D-2010.03
+Date   : Sat Jun 13 22:54:19 2015
+****************************************
+</code></pre>
+
+<pre><code>****************************************
+
+Operating Conditions: typical   Library: typical
+Wire Load Model Mode: top
+
+  Startpoint: FIFO/count_reg[1]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: FIFO/send_count_reg[0]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  framing_encoding   umc18_wl10            typical
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  FIFO/count_reg[1]/CK (DFFRHQX1)          0.00       0.00 r
+  FIFO/count_reg[1]/Q (DFFRHQX1)           0.64       0.64 r
+  FIFO/U288/Y (OR4X2)                      0.19       0.82 r
+  FIFO/U51/Y (INVX2)                       0.09       0.92 f
+  FIFO/U42/Y (INVX2)                       0.11       1.03 r
+  FIFO/U11/Y (INVX2)                       0.10       1.13 f
+  FIFO/U49/Y (NOR2X1)                      0.79       1.92 r
+  FIFO/U145/Y (AND2X1)                     0.22       2.14 r
+  FIFO/U152/Y (NAND2X1)                    0.16       2.30 f
+  FIFO/U50/Y (NOR2X1)                      0.63       2.92 r
+  FIFO/U41/Y (INVX2)                       0.46       3.38 f
+  FIFO/U47/Y (NOR2X1)                      0.84       4.22 r
+  FIFO/U285/Y (NAND2X1)                    0.07       4.29 f
+  FIFO/U284/Y (OAI2BB1X1)                  0.15       4.44 r
+  FIFO/send_count_reg[0]/D (DFFRHQX1)      0.00       4.44 r
+  data arrival time                                   4.44
+
+  clock clk (rise edge)                100000.00  100000.00
+  clock network delay (ideal)              0.00   100000.00
+  FIFO/send_count_reg[0]/CK (DFFRHQX1)     0.00   100000.00 r
+  library setup time                      -0.14   99999.86
+  data required time                              99999.86
+  -----------------------------------------------------------
+  data required time                              99999.86
+  data arrival time                                  -4.44
+  -----------------------------------------------------------
+  slack (MET)                                     99995.42
+
+
+
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+        -sort_by group
+Design : framing_encoding
+Version: D-2010.03
+Date   : Sat Jun 13 22:54:30 2015
+****************************************
+
+Operating Conditions: typical   Library: typical
+Wire Load Model Mode: top
+
+  Startpoint: FIFO/count_reg[1]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: FIFO/send_count_reg[0]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  framing_encoding   umc18_wl10            typical
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  FIFO/count_reg[1]/CK (DFFRHQX1)          0.00       0.00 r
+  FIFO/count_reg[1]/Q (DFFRHQX1)           0.64       0.64 r
+  FIFO/U288/Y (OR4X2)                      0.19       0.82 r
+  FIFO/U51/Y (INVX2)                       0.09       0.92 f
+  FIFO/U42/Y (INVX2)                       0.11       1.03 r
+  FIFO/U11/Y (INVX2)                       0.10       1.13 f
+  FIFO/U49/Y (NOR2X1)                      0.79       1.92 r
+  FIFO/U145/Y (AND2X1)                     0.22       2.14 r
+  FIFO/U152/Y (NAND2X1)                    0.16       2.30 f
+  FIFO/U50/Y (NOR2X1)                      0.63       2.92 r
+  FIFO/U41/Y (INVX2)                       0.46       3.38 f
+  FIFO/U47/Y (NOR2X1)                      0.84       4.22 r
+  FIFO/U285/Y (NAND2X1)                    0.07       4.29 f
+  FIFO/U284/Y (OAI2BB1X1)                  0.15       4.44 r
+  FIFO/send_count_reg[0]/D (DFFRHQX1)      0.00       4.44 r
+  data arrival time                                   4.44
+
+  clock clk (rise edge)                100000.00  100000.00
+  clock network delay (ideal)              0.00   100000.00
+  FIFO/send_count_reg[0]/CK (DFFRHQX1)     0.00   100000.00 r
+  library setup time                      -0.14   99999.86
+  data required time                              99999.86
+  -----------------------------------------------------------
+  data required time                              99999.86
+  data arrival time                                  -4.44
+  -----------------------------------------------------------
+  slack (MET)                                     99995.42
+
+</code></pre>
+
+<h2>
+<a id="user-content-综合后仿真" class="anchor" href="#%E7%BB%BC%E5%90%88%E5%90%8E%E4%BB%BF%E7%9C%9F" aria-hidden="true"><span class="octicon octicon-link"></span></a>综合后仿真</h2>
+
+<p><a href="/Users/lisihan969/src/projects/framing_encoding/post-route_test.png" target="_blank"><img src="/Users/lisihan969/src/projects/framing_encoding/post-route_test.png" alt="post-route_test" style="max-width:100%;"></a></p>
+
+<p>波形与综合前波形<strong>几乎没有任何区别</strong></p>
+
+<h2>
+<a id="user-content-布局布线" class="anchor" href="#%E5%B8%83%E5%B1%80%E5%B8%83%E7%BA%BF" aria-hidden="true"><span class="octicon octicon-link"></span></a>布局布线</h2>
+
+<h3>
+<a id="user-content-pre-cts" class="anchor" href="#pre-cts" aria-hidden="true"><span class="octicon octicon-link"></span></a>pre CTS</h3>
+
+<p><a href="/Users/lisihan969/src/projects/framing_encoding/pre-CTS.png" target="_blank"><img src="/Users/lisihan969/src/projects/framing_encoding/pre-CTS.png" alt="pre-CTS" style="max-width:100%;"></a></p>
+
+<h3>
+<a id="user-content-post-cts" class="anchor" href="#post-cts" aria-hidden="true"><span class="octicon octicon-link"></span></a>post CTS</h3>
+
+<p><a href="/Users/lisihan969/src/projects/framing_encoding/post-CTS.png" target="_blank"><img src="/Users/lisihan969/src/projects/framing_encoding/post-CTS.png" alt="post-CTS" style="max-width:100%;"></a></p>
+
+<h3>
+<a id="user-content-trail-routing" class="anchor" href="#trail-routing" aria-hidden="true"><span class="octicon octicon-link"></span></a>trail routing</h3>
+
+<p><a href="/Users/lisihan969/src/projects/framing_encoding/trail_routing.png" target="_blank"><img src="/Users/lisihan969/src/projects/framing_encoding/trail_routing.png" alt="trail_routing" style="max-width:100%;"></a></p>
+
+<h3>
+<a id="user-content-nano-routing" class="anchor" href="#nano-routing" aria-hidden="true"><span class="octicon octicon-link"></span></a>nano routing</h3>
+
+<p><a href="/Users/lisihan969/src/projects/framing_encoding/nano_routing.png" target="_blank"><img src="/Users/lisihan969/src/projects/framing_encoding/nano_routing.png" alt="nano_routing" style="max-width:100%;"></a></p>
+
+<h3>
+<a id="user-content-add-filler" class="anchor" href="#add-filler" aria-hidden="true"><span class="octicon octicon-link"></span></a>add filler</h3>
+
+<p><a href="/Users/lisihan969/src/projects/framing_encoding/add_filler.png" target="_blank"><img src="/Users/lisihan969/src/projects/framing_encoding/add_filler.png" alt="add_filler" style="max-width:100%;"></a></p>
+
+<h3>
+<a id="user-content-final" class="anchor" href="#final" aria-hidden="true"><span class="octicon octicon-link"></span></a><em>final</em>
+</h3>
+
+<p><a href="/Users/lisihan969/src/projects/framing_encoding/final.png" target="_blank"><img src="/Users/lisihan969/src/projects/framing_encoding/final.png" alt="final" style="max-width:100%;"></a></p>
+
+<h2>
+<a id="user-content-附-源码" class="anchor" href="#%E9%99%84-%E6%BA%90%E7%A0%81" aria-hidden="true"><span class="octicon octicon-link"></span></a>
+<em>附</em> 源码</h2>
+
+<h3>
+<a id="user-content-framing_encodingv" class="anchor" href="#framing_encodingv" aria-hidden="true"><span class="octicon octicon-link"></span></a>framing_encoding.v</h3>
+
+<div class="highlight highlight-verilog"><pre><span class="pl-c">// framing_encoding.v</span>
+
+<span class="pl-k">module</span> <span class="pl-en">framing_encoding</span> (
+    <span class="pl-k">input</span> clk,  <span class="pl-c">// 10kHz</span>
+    <span class="pl-k">input</span> reset_n,  <span class="pl-c">// asynchronous reset active low</span>
+    <span class="pl-k">input</span> [<span class="pl-c1">7</span>:<span class="pl-c1">0</span>] phr_psdu_in, 
+    <span class="pl-k">input</span> phr_psdu_in_valid, 
+    <span class="pl-k">output</span> framing_encoding_out, 
+    <span class="pl-ent">output</span> <span class="pl-ent">framing_encoding_out_valid</span> 
+);
+
+<span class="pl-ent">fifo</span> <span class="pl-ent">FIFO</span>(
+    .clk(clk), 
+    .reset_n(reset_n), 
+    .fifo_input(phr_psdu_in), 
+    .fifo_input_valid(phr_psdu_in_valid), 
+
+    .fifo_output(fifo_output), 
+    .fifo_output_valid(fifo_output_valid)
+);
+
+<span class="pl-ent">crc</span> <span class="pl-ent">CRC</span>(
+    .clk(clk), 
+    .reset_n(reset_n), 
+    .tx_data(fifo_output), 
+    .tx_data_valid(fifo_output_valid), 
+
+    .tx_out(crc_output), 
+    .tx_out_valid(crc_output_valid)
+);
+
+<span class="pl-ent">select_whiting_input</span> <span class="pl-ent">SELECT</span>(
+    .clk(clk), 
+    .reset_n(reset_n), 
+    .fifo_output(fifo_output), 
+    .fifo_output_valid(fifo_output_valid), 
+    .crc_output(crc_output), 
+    .crc_output_valid(crc_output_valid), 
+
+    .whiting_input(whiting_input), 
+    .whiting_input_valid(whiting_input_valid)
+);
+
+<span class="pl-ent">whiting</span> <span class="pl-ent">WHITING</span>(
+    .clk(clk), 
+    .reset_n(reset_n), 
+    .tx_data(whiting_input), 
+    .tx_data_valid(whiting_input_valid), 
+
+    .tx_out(framing_encoding_out), 
+    .tx_out_valid(framing_encoding_out_valid)
+);
+
+<span class="pl-k">endmodule</span>
+
+<span class="pl-k">module</span> <span class="pl-en">select_whiting_input</span> (
+    <span class="pl-k">input</span> clk, 
+    <span class="pl-k">input</span> reset_n, 
+    <span class="pl-k">input</span> fifo_output, 
+    <span class="pl-k">input</span> fifo_output_valid, 
+    <span class="pl-k">input</span> crc_output, 
+    <span class="pl-k">input</span> crc_output_valid, 
+    <span class="pl-k">output</span> <span class="pl-k">reg</span> whiting_input, 
+    <span class="pl-k">output</span> <span class="pl-k">reg</span> whiting_input_valid
+);
+
+<span class="pl-k">reg</span> pre_input;
+<span class="pl-k">reg</span> [<span class="pl-c1">1</span>:<span class="pl-c1">0</span>] state;
+<span class="pl-c">// state == 0: waiting for input data</span>
+<span class="pl-c">// state == 1: stored one bit data in pre_input</span>
+<span class="pl-c">// state == 2: pre_input is empty, turns into a buffer</span>
+
+<span class="pl-k">always</span> @(<span class="pl-k">posedge</span> clk <span class="pl-k">or</span> <span class="pl-k">negedge</span> reset_n) <span class="pl-k">begin</span>
+    <span class="pl-k">if</span> (<span class="pl-k">~</span>reset_n) <span class="pl-k">begin</span>
+        whiting_input_valid <span class="pl-k">&lt;=</span> <span class="pl-c1">0</span>;
+        state <span class="pl-k">&lt;=</span> <span class="pl-c1">0</span>;
+    <span class="pl-k">end</span> <span class="pl-k">else</span> <span class="pl-k">begin</span>
+        <span class="pl-k">if</span> (state <span class="pl-k">==</span> <span class="pl-c1">0</span>) <span class="pl-k">begin</span>
+            <span class="pl-k">if</span> (fifo_output_valid) <span class="pl-k">begin</span>
+                pre_input <span class="pl-k">&lt;=</span> fifo_output;
+                whiting_input_valid <span class="pl-k">&lt;=</span> <span class="pl-c1">0</span>;
+                state <span class="pl-k">&lt;=</span> <span class="pl-c1">1</span>;
+            <span class="pl-k">end</span> <span class="pl-k">else</span> state <span class="pl-k">&lt;=</span> <span class="pl-c1">0</span>;
+        <span class="pl-k">end</span> <span class="pl-k">else</span> <span class="pl-k">if</span> (state <span class="pl-k">==</span> <span class="pl-c1">1</span>) <span class="pl-k">begin</span>
+            whiting_input <span class="pl-k">&lt;=</span> pre_input;
+            whiting_input_valid <span class="pl-k">&lt;=</span> <span class="pl-c1">1</span>;
+            <span class="pl-k">if</span> (fifo_output_valid) <span class="pl-k">begin</span>
+                pre_input <span class="pl-k">&lt;=</span> fifo_output;
+                state <span class="pl-k">&lt;=</span> <span class="pl-c1">1</span>;
+            <span class="pl-k">end</span> <span class="pl-k">else</span> <span class="pl-k">if</span> (crc_output_valid) <span class="pl-k">begin</span>
+                pre_input <span class="pl-k">&lt;=</span> crc_output;
+                state <span class="pl-k">&lt;=</span> <span class="pl-c1">1</span>;
+            <span class="pl-k">end</span> <span class="pl-k">else</span> <span class="pl-k">begin</span>
+                state <span class="pl-k">&lt;=</span> <span class="pl-c1">2</span>;
+            <span class="pl-k">end</span>
+        <span class="pl-k">end</span> <span class="pl-k">else</span> <span class="pl-k">begin</span>
+            <span class="pl-k">if</span> (fifo_output_valid) <span class="pl-k">begin</span>
+                whiting_input <span class="pl-k">&lt;=</span> fifo_output;
+                whiting_input_valid <span class="pl-k">&lt;=</span> <span class="pl-c1">1</span>;
+                state <span class="pl-k">&lt;=</span> <span class="pl-c1">2</span>;
+            <span class="pl-k">end</span> <span class="pl-k">else</span> <span class="pl-k">if</span> (crc_output_valid) <span class="pl-k">begin</span>
+                whiting_input <span class="pl-k">&lt;=</span> crc_output;
+                whiting_input_valid <span class="pl-k">&lt;=</span> <span class="pl-c1">1</span>;
+                state <span class="pl-k">&lt;=</span> <span class="pl-c1">2</span>;
+            <span class="pl-k">end</span> <span class="pl-k">else</span> <span class="pl-k">begin</span>
+                whiting_input_valid <span class="pl-k">&lt;=</span> <span class="pl-c1">0</span>;
+                state <span class="pl-k">&lt;=</span> <span class="pl-c1">0</span>;
+            <span class="pl-k">end</span>
+        <span class="pl-k">end</span>
+    <span class="pl-k">end</span>
+<span class="pl-k">end</span>
+
+<span class="pl-k">endmodule</span></pre></div>
+
+<h3>
+<a id="user-content-fifov" class="anchor" href="#fifov" aria-hidden="true"><span class="octicon octicon-link"></span></a>fifo.v</h3>
+
+<div class="highlight highlight-verilog"><pre><span class="pl-c">// fifo.v</span>
+
+<span class="pl-k">module</span> <span class="pl-en">fifo</span> (
+    <span class="pl-k">input</span> clk, 
+    <span class="pl-k">input</span> reset_n, 
+    <span class="pl-k">input</span> [<span class="pl-c1">7</span>:<span class="pl-c1">0</span>] fifo_input,   <span class="pl-c">// 8 bit in</span>
+    <span class="pl-k">input</span> fifo_input_valid, 
+    <span class="pl-k">output</span> <span class="pl-k">reg</span> fifo_output,     <span class="pl-c">// 1 bit out</span>
+    <span class="pl-k">output</span> <span class="pl-k">reg</span> fifo_output_valid
+    <span class="pl-c">// output fifo_full</span>
+);
+
+<span class="pl-k">parameter</span> MEMORY_SIZE <span class="pl-k">=</span> <span class="pl-c1">8</span>;
+<span class="pl-k">integer</span> i;
+
+<span class="pl-k">reg</span> [<span class="pl-c1">7</span>:<span class="pl-c1">0</span>] memory [MEMORY_SIZE <span class="pl-k">-</span> <span class="pl-c1">1</span>:<span class="pl-c1">0</span>];
+<span class="pl-k">reg</span> [<span class="pl-c1">2</span>:<span class="pl-c1">0</span>] col;  <span class="pl-c">// mark which bit to output</span>
+<span class="pl-k">reg</span> [<span class="pl-c1">2</span>:<span class="pl-c1">0</span>] read_row;  <span class="pl-c">// mark which row to output</span>
+<span class="pl-k">reg</span> [<span class="pl-c1">2</span>:<span class="pl-c1">0</span>] write_row; <span class="pl-c">// mark which row to write data</span>
+<span class="pl-k">reg</span> [<span class="pl-c1">3</span>:<span class="pl-c1">0</span>] count;    <span class="pl-c">// count the number of 1-Byte-data still in memory</span>
+<span class="pl-k">reg</span> [<span class="pl-c1">7</span>:<span class="pl-c1">0</span>] send_count;  <span class="pl-c">// count the number of data sent out</span>
+<span class="pl-k">reg</span> [<span class="pl-c1">7</span>:<span class="pl-c1">0</span>] data_size;    <span class="pl-c">// Bytes of phr + psdu is data_size</span>
+<span class="pl-k">reg</span> read_data_size;     <span class="pl-c">// tag: high active to catch data_size</span>
+<span class="pl-k">reg</span> [<span class="pl-c1">6</span>:<span class="pl-c1">0</span>] shr_count;    <span class="pl-c">// count: output SHR code</span>
+<span class="pl-k">reg</span> [<span class="pl-c1">79</span>:<span class="pl-c1">0</span>] shr;         <span class="pl-c">// SHR code: {16'hF3_98, 64'hAA_AA_AA_AA_AA_AA_AA_AA}</span>
+
+<span class="pl-k">always</span> @(<span class="pl-k">posedge</span> clk <span class="pl-k">or</span> <span class="pl-k">negedge</span> reset_n) <span class="pl-k">begin</span>
+    <span class="pl-k">if</span> (<span class="pl-k">~</span>reset_n) <span class="pl-k">begin</span>
+        <span class="pl-c">// initialize memory</span>
+        <span class="pl-k">for</span> (i <span class="pl-k">=</span> <span class="pl-c1">0</span>; i <span class="pl-k">&lt;</span> MEMORY_SIZE; i <span class="pl-k">=</span> i <span class="pl-k">+</span> <span class="pl-c1">1</span>) <span class="pl-k">begin</span>
+            memory[i] <span class="pl-k">&lt;=</span> <span class="pl-c1">8'h00</span>;
+        <span class="pl-k">end</span>
+        <span class="pl-c">// initialize row, col</span>
+        <span class="pl-c">// ready to output memory[0][0], but memory is empty</span>
+        col <span class="pl-k">&lt;=</span> <span class="pl-c1">3'b000</span>;
+        read_row <span class="pl-k">&lt;=</span> <span class="pl-c1">3'b000</span>;
+        write_row <span class="pl-k">&lt;=</span> <span class="pl-c1">3'b000</span>;
+        fifo_output <span class="pl-k">&lt;=</span> <span class="pl-c1">0</span>;
+        fifo_output_valid <span class="pl-k">&lt;=</span> <span class="pl-c1">0</span>;
+        count <span class="pl-k">&lt;=</span> <span class="pl-c1">0</span>;
+        send_count <span class="pl-k">&lt;=</span> <span class="pl-c1">0</span>;
+        read_data_size <span class="pl-k">&lt;=</span> <span class="pl-c1">1</span>;
+        shr_count <span class="pl-k">&lt;=</span> <span class="pl-c1">0</span>;
+        shr <span class="pl-k">&lt;=</span> {<span class="pl-c1">16'hF3_98</span>, <span class="pl-c1">64'hAA_AA_AA_AA_AA_AA_AA_AA</span>};
+    <span class="pl-k">end</span> <span class="pl-k">else</span> <span class="pl-k">begin</span>
+        <span class="pl-k">if</span> (fifo_input_valid <span class="pl-k">&amp;&amp;</span> count <span class="pl-k">&lt;</span> MEMORY_SIZE) <span class="pl-k">begin</span>   <span class="pl-c">// store input data</span>
+            <span class="pl-k">if</span> (read_data_size) <span class="pl-k">begin</span>
+                data_size <span class="pl-k">&lt;=</span> fifo_input;    <span class="pl-c">// first Byte</span>
+                read_data_size <span class="pl-k">&lt;=</span> <span class="pl-c1">0</span>;        <span class="pl-c">// flag off</span>
+            <span class="pl-k">end</span>
+            <span class="pl-k">if</span> (count <span class="pl-k">==</span> <span class="pl-c1">0</span>) <span class="pl-k">begin</span>
+                memory[<span class="pl-c1">0</span>] <span class="pl-k">&lt;=</span> fifo_input;    <span class="pl-c">// store into empty memory</span>
+                read_row <span class="pl-k">&lt;=</span> <span class="pl-c1">0</span>;
+                write_row <span class="pl-k">&lt;=</span> <span class="pl-c1">1</span>;
+            <span class="pl-k">end</span> <span class="pl-k">else</span> <span class="pl-k">begin</span>
+                memory[write_row] <span class="pl-k">&lt;=</span> fifo_input;
+                write_row <span class="pl-k">&lt;=</span> write_row <span class="pl-k">+</span> <span class="pl-c1">1</span>;
+            <span class="pl-k">end</span>
+            count <span class="pl-k">&lt;=</span> count <span class="pl-k">+</span> <span class="pl-c1">1</span>;
+        <span class="pl-k">end</span>
+        <span class="pl-k">if</span> (count <span class="pl-k">!=</span> <span class="pl-c1">0</span>) <span class="pl-k">begin</span>      <span class="pl-c">// output data</span>
+            <span class="pl-k">if</span> (shr_count <span class="pl-k">==</span> <span class="pl-c1">80</span>) <span class="pl-k">begin</span>      <span class="pl-c">// SHR end</span>
+                shr <span class="pl-k">&lt;=</span> {<span class="pl-c1">16'hF3_98</span>, <span class="pl-c1">64'hAA_AA_AA_AA_AA_AA_AA_AA</span>};
+                fifo_output <span class="pl-k">&lt;=</span> memory[read_row][col];
+                fifo_output_valid <span class="pl-k">&lt;=</span> <span class="pl-c1">1</span>;
+                <span class="pl-k">if</span> (col <span class="pl-k">==</span> <span class="pl-c1">7</span>) <span class="pl-k">begin</span>     <span class="pl-c">// one Byte data is sent out</span>
+                    read_row <span class="pl-k">&lt;=</span> read_row <span class="pl-k">+</span> <span class="pl-c1">1</span>;
+                    count <span class="pl-k">&lt;=</span> count <span class="pl-k">-</span> <span class="pl-c1">1</span>;
+                    <span class="pl-k">if</span> (send_count <span class="pl-k">==</span> data_size) <span class="pl-k">begin</span>  <span class="pl-c">// data end</span>
+                        send_count <span class="pl-k">&lt;=</span> <span class="pl-c1">0</span>;
+                        read_data_size <span class="pl-k">&lt;=</span> <span class="pl-c1">1</span>;    <span class="pl-c">// catch next data_size</span>
+                        shr_count <span class="pl-k">&lt;=</span> <span class="pl-c1">0</span>;
+                    <span class="pl-k">end</span> <span class="pl-k">else</span> send_count <span class="pl-k">&lt;=</span> send_count <span class="pl-k">+</span> <span class="pl-c1">1</span>;
+                <span class="pl-k">end</span>
+                col <span class="pl-k">&lt;=</span> col <span class="pl-k">+</span> <span class="pl-c1">1</span>;
+            <span class="pl-k">end</span> <span class="pl-k">else</span> <span class="pl-k">begin</span>      <span class="pl-c">// outputing SHR code</span>
+                fifo_output <span class="pl-k">&lt;=</span> shr[<span class="pl-c1">0</span>];
+                fifo_output_valid <span class="pl-k">&lt;=</span> <span class="pl-c1">1</span>;
+                shr <span class="pl-k">&lt;=</span> shr <span class="pl-k">&gt;&gt;</span> <span class="pl-c1">1</span>;
+                shr_count <span class="pl-k">&lt;=</span> shr_count <span class="pl-k">+</span> <span class="pl-c1">1</span>;
+            <span class="pl-k">end</span>
+        <span class="pl-k">end</span> <span class="pl-k">else</span> fifo_output_valid <span class="pl-k">&lt;=</span> <span class="pl-c1">0</span>;
+    <span class="pl-k">end</span>
+<span class="pl-k">end</span>
+
+<span class="pl-k">endmodule</span> </pre></div>
+
+<h3>
+<a id="user-content-crcv" class="anchor" href="#crcv" aria-hidden="true"><span class="octicon octicon-link"></span></a>crc.v</h3>
+
+<div class="highlight highlight-verilog"><pre><span class="pl-c">// crc.v</span>
+
+<span class="pl-k">module</span> <span class="pl-en">crc</span> (
+    <span class="pl-k">input</span> clk,  <span class="pl-c">// 10kHz</span>
+    <span class="pl-k">input</span> reset_n,  <span class="pl-c">// asynchronous reset active low</span>
+    <span class="pl-k">input</span> tx_data, 
+    <span class="pl-k">input</span> tx_data_valid, 
+    <span class="pl-k">output</span> <span class="pl-k">reg</span> tx_out,  <span class="pl-c">// serial output</span>
+    <span class="pl-k">output</span> <span class="pl-k">reg</span> tx_out_valid     <span class="pl-c">// high active when outputing FCS code serially</span>
+);
+
+<span class="pl-k">reg</span> [<span class="pl-c1">15</span>:<span class="pl-c1">0</span>] fcs_n;
+<span class="pl-k">reg</span> [<span class="pl-c1">6</span>:<span class="pl-c1">0</span>] shr_count;
+<span class="pl-k">reg</span> [<span class="pl-c1">3</span>:<span class="pl-c1">0</span>] fcs_count;
+
+<span class="pl-k">always</span> @(<span class="pl-k">posedge</span> clk <span class="pl-k">or</span> <span class="pl-k">negedge</span> reset_n) <span class="pl-k">begin</span>
+    <span class="pl-k">if</span> (<span class="pl-k">~</span>reset_n) <span class="pl-k">begin</span>
+        fcs_n <span class="pl-k">&lt;=</span> <span class="pl-c1">16'hffff</span>;
+        shr_count <span class="pl-k">&lt;=</span> <span class="pl-c1">0</span>;
+        fcs_count <span class="pl-k">&lt;=</span> <span class="pl-c1">0</span>;
+    <span class="pl-k">end</span> <span class="pl-k">else</span> <span class="pl-k">begin</span>
+        <span class="pl-k">if</span> (tx_data_valid) <span class="pl-k">begin</span>
+            <span class="pl-k">if</span> (shr_count <span class="pl-k">==</span> <span class="pl-c1">80</span>) <span class="pl-k">begin</span>
+                fcs_n <span class="pl-k">&lt;=</span> {fcs_n[<span class="pl-c1">0</span>]^tx_data, fcs_n[<span class="pl-c1">15</span>:<span class="pl-c1">12</span>], 
+                          fcs_n[<span class="pl-c1">11</span>]^fcs_n[<span class="pl-c1">0</span>]^tx_data, fcs_n[<span class="pl-c1">10</span>:<span class="pl-c1">5</span>], 
+                          fcs_n[<span class="pl-c1">4</span>]^fcs_n[<span class="pl-c1">0</span>]^tx_data, fcs_n[<span class="pl-c1">3</span>:<span class="pl-c1">1</span>]};
+            <span class="pl-k">end</span> <span class="pl-k">else</span> shr_count <span class="pl-k">&lt;=</span> shr_count <span class="pl-k">+</span> <span class="pl-c1">1</span>;
+        <span class="pl-k">end</span> <span class="pl-k">else</span> <span class="pl-k">if</span> (shr_count <span class="pl-k">==</span> <span class="pl-c1">80</span>) <span class="pl-k">begin</span>
+            tx_out_valid <span class="pl-k">&lt;=</span> <span class="pl-c1">1</span>;
+            tx_out <span class="pl-k">&lt;=</span> <span class="pl-k">~</span>fcs_n[<span class="pl-c1">0</span>];
+            fcs_n <span class="pl-k">&lt;=</span> fcs_n <span class="pl-k">&gt;&gt;</span> <span class="pl-c1">1</span>;
+            <span class="pl-k">if</span> (fcs_count <span class="pl-k">==</span> <span class="pl-c1">15</span>) shr_count <span class="pl-k">&lt;=</span> <span class="pl-c1">0</span>;    <span class="pl-c">// ready to receive next data;</span>
+            fcs_count <span class="pl-k">&lt;=</span> fcs_count <span class="pl-k">+</span> <span class="pl-c1">1</span>;
+        <span class="pl-k">end</span> <span class="pl-k">else</span> <span class="pl-k">begin</span>
+            tx_out_valid <span class="pl-k">&lt;=</span> <span class="pl-c1">0</span>;
+            shr_count <span class="pl-k">&lt;=</span> <span class="pl-c1">0</span>;
+        <span class="pl-k">end</span>
+    <span class="pl-k">end</span>
+<span class="pl-k">end</span>
+
+<span class="pl-k">endmodule</span></pre></div>
+
+<h3>
+<a id="user-content-whitingv" class="anchor" href="#whitingv" aria-hidden="true"><span class="octicon octicon-link"></span></a>whiting.v</h3>
+
+<div class="highlight highlight-verilog"><pre><span class="pl-c">// whiting.v</span>
+
+<span class="pl-k">module</span> <span class="pl-en">whiting</span> (
+    <span class="pl-k">input</span> clk, 
+    <span class="pl-k">input</span> reset_n, 
+    <span class="pl-k">input</span> tx_data,  <span class="pl-c">// serial input</span>
+    <span class="pl-k">input</span> tx_data_valid, 
+    <span class="pl-k">output</span> <span class="pl-k">reg</span> tx_out,  <span class="pl-c">// serial output</span>
+    <span class="pl-k">output</span> <span class="pl-k">reg</span> tx_out_valid 
+);
+
+<span class="pl-k">reg</span> [<span class="pl-c1">8</span>:<span class="pl-c1">0</span>] pseudo_rand;
+<span class="pl-k">reg</span> [<span class="pl-c1">6</span>:<span class="pl-c1">0</span>] shr_count;
+<span class="pl-k">reg</span> data_received;
+
+<span class="pl-k">always</span> @(<span class="pl-k">posedge</span> clk <span class="pl-k">or</span> <span class="pl-k">negedge</span> reset_n) <span class="pl-k">begin</span>
+    <span class="pl-k">if</span> (<span class="pl-k">~</span>reset_n) <span class="pl-k">begin</span>
+        pseudo_rand <span class="pl-k">&lt;=</span> <span class="pl-c1">9'b111_111_111</span>;
+        tx_out_valid <span class="pl-k">&lt;=</span> <span class="pl-c1">0</span>;
+        shr_count <span class="pl-k">&lt;=</span> <span class="pl-c1">0</span>;
+        data_received <span class="pl-k">&lt;=</span> <span class="pl-c1">0</span>;
+    <span class="pl-k">end</span> <span class="pl-k">else</span> <span class="pl-k">begin</span>
+        <span class="pl-k">if</span> (tx_data_valid) <span class="pl-k">begin</span>
+            <span class="pl-k">if</span> (shr_count <span class="pl-k">==</span> <span class="pl-c1">80</span>) <span class="pl-k">begin</span>
+                tx_out <span class="pl-k">&lt;=</span> tx_data ^ pseudo_rand[<span class="pl-c1">0</span>];
+                tx_out_valid <span class="pl-k">&lt;=</span> <span class="pl-c1">1</span>;
+                pseudo_rand <span class="pl-k">&lt;=</span> {pseudo_rand[<span class="pl-c1">5</span>]^pseudo_rand[<span class="pl-c1">0</span>], pseudo_rand[<span class="pl-c1">8</span>:<span class="pl-c1">1</span>]};
+                data_received <span class="pl-k">&lt;=</span> <span class="pl-c1">1</span>;
+            <span class="pl-k">end</span> <span class="pl-k">else</span> <span class="pl-k">begin</span>
+                shr_count <span class="pl-k">&lt;=</span> shr_count <span class="pl-k">+</span> <span class="pl-c1">1</span>;
+                tx_out <span class="pl-k">&lt;=</span> tx_data;
+                tx_out_valid <span class="pl-k">&lt;=</span> <span class="pl-c1">1</span>;
+                data_received <span class="pl-k">&lt;=</span> <span class="pl-c1">0</span>;
+            <span class="pl-k">end</span>
+        <span class="pl-k">end</span> <span class="pl-k">else</span> <span class="pl-k">if</span> (data_received) <span class="pl-k">begin</span>   <span class="pl-c">// ready to receive SHR of next data</span>
+            tx_out_valid <span class="pl-k">&lt;=</span> <span class="pl-c1">0</span>;
+            shr_count <span class="pl-k">&lt;=</span> <span class="pl-c1">0</span>;
+            data_received <span class="pl-k">&lt;=</span> <span class="pl-c1">1</span>;
+        <span class="pl-k">end</span> <span class="pl-k">else</span> <span class="pl-k">begin</span>
+            tx_out_valid <span class="pl-k">&lt;=</span> <span class="pl-c1">0</span>;  <span class="pl-c">// waiting for PHR PSDU FCS</span>
+        <span class="pl-k">end</span>
+    <span class="pl-k">end</span>
+<span class="pl-k">end</span>
+
+<span class="pl-k">endmodule</span></pre></div>
+
+<h3>
+<a id="user-content-framing_encoding_testv" class="anchor" href="#framing_encoding_testv" aria-hidden="true"><span class="octicon octicon-link"></span></a>framing_encoding_test.v</h3>
+
+<div class="highlight highlight-verilog"><pre><span class="pl-k">`timescale</span> 1us<span class="pl-k">/</span>100ns
+
+<span class="pl-k">module</span> <span class="pl-en">framing_encoding_test</span>;
+
+     <span class="pl-k">wire</span>             framing_encoding_out;
+     <span class="pl-k">wire</span>             framing_encoding_out_valid;
+     <span class="pl-k">reg</span>     [<span class="pl-c1">7</span>:<span class="pl-c1">0</span>]    phr_psdu_in;
+     <span class="pl-k">reg</span>              phr_psdu_in_valid;
+     <span class="pl-k">reg</span>              clk;
+     <span class="pl-k">reg</span>              reset_n;
+
+
+
+
+ <span class="pl-ent">framing_encoding</span> <span class="pl-ent">u0framing_encoding</span>(
+                                    .framing_encoding_out        (framing_encoding_out),
+                                    .framing_encoding_out_valid  (framing_encoding_out_valid),
+                                    .phr_psdu_in                 (phr_psdu_in),
+                                    .phr_psdu_in_valid           (phr_psdu_in_valid),
+                                    .clk                         (clk),
+                                    .reset_n                     (reset_n)
+                                    );
+
+<span class="pl-c">// stop simulation after 20000us</span>
+  <span class="pl-k">initial</span> 
+    <span class="pl-k">begin</span>
+    <span class="pl-c1">#20000</span> <span class="pl-c1">$stop</span>;
+    <span class="pl-k">end</span>
+
+
+
+<span class="pl-c">// generate data input signal</span>
+  <span class="pl-k">initial</span> 
+    <span class="pl-k">begin</span>
+             phr_psdu_in<span class="pl-k">=</span><span class="pl-c1">8'h00</span>;
+        <span class="pl-c1">#500</span> phr_psdu_in<span class="pl-k">=</span><span class="pl-c1">8'h07</span>;
+        <span class="pl-c1">#100</span> phr_psdu_in<span class="pl-k">=</span><span class="pl-c1">8'h03</span>;
+        <span class="pl-c1">#100</span> phr_psdu_in<span class="pl-k">=</span><span class="pl-c1">8'h01</span>;
+        <span class="pl-c1">#100</span> phr_psdu_in<span class="pl-k">=</span><span class="pl-c1">8'h05</span>;
+        <span class="pl-c1">#100</span> phr_psdu_in<span class="pl-k">=</span><span class="pl-c1">8'h21</span>;
+        <span class="pl-c1">#100</span> phr_psdu_in<span class="pl-k">=</span><span class="pl-c1">8'h43</span>;
+        <span class="pl-c1">#100</span> phr_psdu_in<span class="pl-k">=</span><span class="pl-c1">8'h65</span>;
+        <span class="pl-c1">#100</span> phr_psdu_in<span class="pl-k">=</span><span class="pl-c1">8'h87</span>;
+    <span class="pl-k">end</span>
+
+<span class="pl-c">// generate phr_psdu_in_valid signal</span>
+  <span class="pl-k">initial</span> 
+    <span class="pl-k">begin</span>
+             phr_psdu_in_valid <span class="pl-k">=</span><span class="pl-c1">1'b0</span>;
+        <span class="pl-c1">#500</span> phr_psdu_in_valid <span class="pl-k">=</span><span class="pl-c1">1'b1</span>;
+        <span class="pl-c1">#800</span> phr_psdu_in_valid <span class="pl-k">=</span><span class="pl-c1">1'b0</span>;
+    <span class="pl-k">end</span>
+
+<span class="pl-c">// generate clk signal</span>
+  <span class="pl-k">initial</span> 
+    <span class="pl-k">begin</span>
+        clk<span class="pl-k">=</span><span class="pl-c1">1'b0</span>;
+    <span class="pl-k">end</span>
+<span class="pl-k">always</span> <span class="pl-c1">#50</span> clk<span class="pl-k">=~</span>clk;
+
+<span class="pl-c">// generate resrt_n signal</span>
+  <span class="pl-k">initial</span> 
+    <span class="pl-k">begin</span>
+               reset_n<span class="pl-k">=</span><span class="pl-c1">1'b1</span>;
+        #  <span class="pl-c1">520</span> reset_n<span class="pl-k">=</span><span class="pl-c1">1'b0</span>;
+        #  <span class="pl-c1">20</span>  reset_n<span class="pl-k">=</span><span class="pl-c1">1'b1</span>;
+    <span class="pl-k">end</span>
+
+<span class="pl-k">endmodule</span></pre></div>
+
+<h3>
+<a id="user-content-fifo_testv" class="anchor" href="#fifo_testv" aria-hidden="true"><span class="octicon octicon-link"></span></a>fifo_test.v</h3>
+
+<div class="highlight highlight-verilog"><pre><span class="pl-c">// fifo_test.v</span>
+<span class="pl-k">`timescale</span> 1us<span class="pl-k">/</span>100ns
+
+<span class="pl-k">module</span> <span class="pl-en">fifo_test</span>;
+
+     <span class="pl-k">wire</span>             fifo_output;
+     <span class="pl-k">wire</span>             fifo_output_valid;
+     <span class="pl-k">reg</span>     [<span class="pl-c1">7</span>:<span class="pl-c1">0</span>]    phr_psdu_in;
+     <span class="pl-k">reg</span>              phr_psdu_in_valid;
+     <span class="pl-k">reg</span>              clk;
+     <span class="pl-k">reg</span>              reset_n;
+
+
+
+<span class="pl-ent">fifo</span> <span class="pl-ent">fifo0</span> (
+    .clk(clk), 
+    .reset_n(reset_n), 
+    .fifo_input(phr_psdu_in), 
+    .fifo_input_valid(phr_psdu_in_valid), 
+    .fifo_output(fifo_output), 
+    .fifo_output_valid(fifo_output_valid)
+);
+
+
+<span class="pl-c">// stop simulation after 20000us</span>
+  <span class="pl-k">initial</span> 
+    <span class="pl-k">begin</span>
+    <span class="pl-c1">#20000</span> <span class="pl-c1">$stop</span>;
+    <span class="pl-k">end</span>
+
+
+
+<span class="pl-c">// generate data input signal</span>
+  <span class="pl-k">initial</span> 
+    <span class="pl-k">begin</span>
+             phr_psdu_in<span class="pl-k">=</span><span class="pl-c1">8'h00</span>;
+        <span class="pl-c1">#500</span> phr_psdu_in<span class="pl-k">=</span><span class="pl-c1">8'h07</span>;
+        <span class="pl-c1">#100</span> phr_psdu_in<span class="pl-k">=</span><span class="pl-c1">8'h03</span>;
+        <span class="pl-c1">#100</span> phr_psdu_in<span class="pl-k">=</span><span class="pl-c1">8'h01</span>;
+        <span class="pl-c1">#100</span> phr_psdu_in<span class="pl-k">=</span><span class="pl-c1">8'h05</span>;
+        <span class="pl-c1">#100</span> phr_psdu_in<span class="pl-k">=</span><span class="pl-c1">8'h21</span>;
+        <span class="pl-c1">#100</span> phr_psdu_in<span class="pl-k">=</span><span class="pl-c1">8'h43</span>;
+        <span class="pl-c1">#100</span> phr_psdu_in<span class="pl-k">=</span><span class="pl-c1">8'h65</span>;
+        <span class="pl-c1">#100</span> phr_psdu_in<span class="pl-k">=</span><span class="pl-c1">8'h87</span>;
+    <span class="pl-k">end</span>
+
+<span class="pl-c">// generate phr_psdu_in_valid signal</span>
+  <span class="pl-k">initial</span> 
+    <span class="pl-k">begin</span>
+             phr_psdu_in_valid <span class="pl-k">=</span><span class="pl-c1">1'b0</span>;
+        <span class="pl-c1">#500</span> phr_psdu_in_valid <span class="pl-k">=</span><span class="pl-c1">1'b1</span>;
+        <span class="pl-c1">#800</span> phr_psdu_in_valid <span class="pl-k">=</span><span class="pl-c1">1'b0</span>;
+    <span class="pl-k">end</span>
+
+<span class="pl-c">// generate clk signal</span>
+  <span class="pl-k">initial</span> 
+    <span class="pl-k">begin</span>
+        clk<span class="pl-k">=</span><span class="pl-c1">1'b0</span>;
+    <span class="pl-k">end</span>
+<span class="pl-k">always</span> <span class="pl-c1">#50</span> clk<span class="pl-k">=~</span>clk;
+
+<span class="pl-c">// generate resrt_n signal</span>
+  <span class="pl-k">initial</span> 
+    <span class="pl-k">begin</span>
+               reset_n<span class="pl-k">=</span><span class="pl-c1">1'b1</span>;
+        #  <span class="pl-c1">520</span> reset_n<span class="pl-k">=</span><span class="pl-c1">1'b0</span>;
+        #  <span class="pl-c1">20</span>  reset_n<span class="pl-k">=</span><span class="pl-c1">1'b1</span>;
+    <span class="pl-k">end</span>
+
+<span class="pl-k">endmodule</span></pre></div>
+
+<h3>
+<a id="user-content-crc_testv" class="anchor" href="#crc_testv" aria-hidden="true"><span class="octicon octicon-link"></span></a>crc_test.v</h3>
+
+<div class="highlight highlight-verilog"><pre><span class="pl-c">// crc_test.v</span>
+<span class="pl-k">`timescale</span> 1us<span class="pl-k">/</span>100ns
+
+<span class="pl-k">module</span> <span class="pl-en">crc_test</span>;
+
+     <span class="pl-k">wire</span>             tx_out;
+     <span class="pl-k">reg</span>     [<span class="pl-c1">7</span>:<span class="pl-c1">0</span>]    phr_psdu_in;
+     <span class="pl-k">reg</span>              phr_psdu_in_valid;
+     <span class="pl-k">reg</span>              clk;
+     <span class="pl-k">reg</span>              reset_n;
+
+
+
+<span class="pl-ent">fifo</span> <span class="pl-ent">fifo0</span> (
+    .clk(clk), 
+    .reset_n(reset_n), 
+    .fifo_input(phr_psdu_in), 
+    .fifo_input_valid(phr_psdu_in_valid), 
+    .fifo_output(fifo_output), 
+    .fifo_output_valid(fifo_output_valid) 
+);
+
+<span class="pl-ent">crc</span> <span class="pl-ent">crc0</span> (
+    .clk(clk), 
+    .reset_n(reset_n), 
+    .tx_data(fifo_output), 
+    .tx_data_valid(fifo_output_valid), 
+    .tx_out(tx_out),
+    .tx_out_valid(tx_out_valid)
+);
+
+
+<span class="pl-c">// stop simulation after 20000us</span>
+  <span class="pl-k">initial</span> 
+    <span class="pl-k">begin</span>
+    <span class="pl-c1">#20000</span> <span class="pl-c1">$stop</span>;
+    <span class="pl-k">end</span>
+
+
+
+<span class="pl-c">// generate data input signal</span>
+  <span class="pl-k">initial</span> 
+    <span class="pl-k">begin</span>
+             phr_psdu_in<span class="pl-k">=</span><span class="pl-c1">8'h00</span>;
+        <span class="pl-c1">#500</span> phr_psdu_in<span class="pl-k">=</span><span class="pl-c1">8'h07</span>;
+        <span class="pl-c1">#100</span> phr_psdu_in<span class="pl-k">=</span><span class="pl-c1">8'h03</span>;
+        <span class="pl-c1">#100</span> phr_psdu_in<span class="pl-k">=</span><span class="pl-c1">8'h01</span>;
+        <span class="pl-c1">#100</span> phr_psdu_in<span class="pl-k">=</span><span class="pl-c1">8'h05</span>;
+        <span class="pl-c1">#100</span> phr_psdu_in<span class="pl-k">=</span><span class="pl-c1">8'h21</span>;
+        <span class="pl-c1">#100</span> phr_psdu_in<span class="pl-k">=</span><span class="pl-c1">8'h43</span>;
+        <span class="pl-c1">#100</span> phr_psdu_in<span class="pl-k">=</span><span class="pl-c1">8'h65</span>;
+        <span class="pl-c1">#100</span> phr_psdu_in<span class="pl-k">=</span><span class="pl-c1">8'h87</span>;
+    <span class="pl-k">end</span>
+
+<span class="pl-c">// generate phr_psdu_in_valid signal</span>
+  <span class="pl-k">initial</span> 
+    <span class="pl-k">begin</span>
+             phr_psdu_in_valid <span class="pl-k">=</span><span class="pl-c1">1'b0</span>;
+        <span class="pl-c1">#500</span> phr_psdu_in_valid <span class="pl-k">=</span><span class="pl-c1">1'b1</span>;
+        <span class="pl-c1">#800</span> phr_psdu_in_valid <span class="pl-k">=</span><span class="pl-c1">1'b0</span>;
+    <span class="pl-k">end</span>
+
+<span class="pl-c">// generate clk signal</span>
+  <span class="pl-k">initial</span> 
+    <span class="pl-k">begin</span>
+        clk<span class="pl-k">=</span><span class="pl-c1">1'b0</span>;
+    <span class="pl-k">end</span>
+<span class="pl-k">always</span> <span class="pl-c1">#50</span> clk<span class="pl-k">=~</span>clk;
+
+<span class="pl-c">// generate reset_n signal</span>
+  <span class="pl-k">initial</span> 
+    <span class="pl-k">begin</span>
+               reset_n<span class="pl-k">=</span><span class="pl-c1">1'b1</span>;
+        #  <span class="pl-c1">520</span> reset_n<span class="pl-k">=</span><span class="pl-c1">1'b0</span>;
+        #  <span class="pl-c1">20</span>  reset_n<span class="pl-k">=</span><span class="pl-c1">1'b1</span>;
+    <span class="pl-k">end</span>
+
+<span class="pl-k">endmodule</span></pre></div>
+</article></body></html>
