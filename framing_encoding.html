@@ -867,7 +867,7 @@ body .markdown-body
 <h2>
 <a id="user-content-编码结构" class="anchor" href="#%E7%BC%96%E7%A0%81%E7%BB%93%E6%9E%84" aria-hidden="true"><span class="octicon octicon-link"></span></a>编码结构</h2>
 
-<p><a href="/Users/lisihan969/src/projects/framing_encoding/encoding_structure.png" target="_blank"><img src="/Users/lisihan969/src/projects/framing_encoding/encoding_structure.png" alt="encoding_structure" style="max-width:100%;"></a></p>
+<p><a href="encoding_structure.png" target="_blank"><img src="encoding_structure.png" alt="encoding_structure" style="max-width:100%;"></a></p>
 
 <h2>
 <a id="user-content-顶层设计" class="anchor" href="#%E9%A1%B6%E5%B1%82%E8%AE%BE%E8%AE%A1" aria-hidden="true"><span class="octicon octicon-link"></span></a>顶层设计</h2>
@@ -875,7 +875,7 @@ body .markdown-body
 <h3>
 <a id="user-content-模块接口" class="anchor" href="#%E6%A8%A1%E5%9D%97%E6%8E%A5%E5%8F%A3" aria-hidden="true"><span class="octicon octicon-link"></span></a>模块接口</h3>
 
-<p><a href="/Users/lisihan969/src/projects/framing_encoding/interface.png" target="_blank"><img src="/Users/lisihan969/src/projects/framing_encoding/interface.png" alt="interface" style="max-width:100%;"></a></p>
+<p><a href="interface.png" target="_blank"><img src="interface.png" alt="interface" style="max-width:100%;"></a></p>
 
 <div class="highlight highlight-verilog"><pre>    <span class="pl-k">input</span> clk;
     <span class="pl-k">input</span> reset_n;
@@ -888,7 +888,7 @@ body .markdown-body
 <h3>
 <a id="user-content-内部结构" class="anchor" href="#%E5%86%85%E9%83%A8%E7%BB%93%E6%9E%84" aria-hidden="true"><span class="octicon octicon-link"></span></a>内部结构</h3>
 
-<p><a href="/Users/lisihan969/src/projects/framing_encoding/structure.png" target="_blank"><img src="/Users/lisihan969/src/projects/framing_encoding/structure.png" alt="structure" style="max-width:100%;"></a></p>
+<p><a href="structure.png" target="_blank"><img src="structure.png" alt="structure" style="max-width:100%;"></a></p>
 
 <h2>
 <a id="user-content-原理分析" class="anchor" href="#%E5%8E%9F%E7%90%86%E5%88%86%E6%9E%90" aria-hidden="true"><span class="octicon octicon-link"></span></a>原理分析</h2>
@@ -912,7 +912,7 @@ body .markdown-body
 <h4>
 <a id="user-content-串入并出" class="anchor" href="#%E4%B8%B2%E5%85%A5%E5%B9%B6%E5%87%BA" aria-hidden="true"><span class="octicon octicon-link"></span></a>串入并出</h4>
 
-<p><a href="/Users/lisihan969/src/projects/framing_encoding/crc_sp.png" target="_blank"><img src="/Users/lisihan969/src/projects/framing_encoding/crc_sp.png" alt="crc_sp" style="max-width:100%;"></a></p>
+<p><a href="crc_sp.png" target="_blank"><img src="crc_sp.png" alt="crc_sp" style="max-width:100%;"></a></p>
 
 <ul>
 <li><p>输入数据从低位到高位依次从<code>TX_DATA</code>输入，当数据全部输入后，此时对应的<code>TX_OUT[15:0]</code>即<code>CRC</code>产生的16位<code>FCS</code>码;</p></li>
@@ -976,7 +976,7 @@ body .markdown-body
 <h4>
 <a id="user-content-串入并出-1" class="anchor" href="#%E4%B8%B2%E5%85%A5%E5%B9%B6%E5%87%BA-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>串入并出</h4>
 
-<p><a href="/Users/lisihan969/src/projects/framing_encoding/whiting_sp.png" target="_blank"><img src="/Users/lisihan969/src/projects/framing_encoding/whiting_sp.png" alt="whiting_sp" style="max-width:100%;"></a></p>
+<p><a href="whiting_sp.png" target="_blank"><img src="whiting_sp.png" alt="whiting_sp" style="max-width:100%;"></a></p>
 
 <h4>
 <a id="user-content-串入串出" class="anchor" href="#%E4%B8%B2%E5%85%A5%E4%B8%B2%E5%87%BA" aria-hidden="true"><span class="octicon octicon-link"></span></a>串入串出</h4>
@@ -1001,7 +1001,7 @@ body .markdown-body
 <ul>
 <li><p>由于输入<code>8 Bits @(posedge clk)</code>与输出<code>1 Bit @(posedge clk)</code>的不匹配，各模块之间用并行方式进行连接只能为<code>CRC</code>和<code>WHITING</code>提速，从整体上看，最终并转串总会使输出速率降低;</p></li>
 <li><p>因此尝试在各模块之间用串行信号通信（串入串出白化编码模块较易实现）
-<a href="/Users/lisihan969/src/projects/framing_encoding/final_structure.png" target="_blank"><img src="/Users/lisihan969/src/projects/framing_encoding/final_structure.png" alt="final_structure" style="max-width:100%;"></a></p></li>
+<a href="final_structure.png" target="_blank"><img src="final_structure.png" alt="final_structure" style="max-width:100%;"></a></p></li>
 <li>
 <p>编码过程：</p>
 
@@ -1065,7 +1065,7 @@ body .markdown-body
 <h4>
 <a id="user-content-功能仿真" class="anchor" href="#%E5%8A%9F%E8%83%BD%E4%BB%BF%E7%9C%9F" aria-hidden="true"><span class="octicon octicon-link"></span></a>功能仿真</h4>
 
-<p><a href="/Users/lisihan969/src/projects/framing_encoding/fifo_test.png" target="_blank"><img src="/Users/lisihan969/src/projects/framing_encoding/fifo_test.png" alt="fifo_test" style="max-width:100%;"></a></p>
+<p><a href="fifo_test.png" target="_blank"><img src="fifo_test.png" alt="fifo_test" style="max-width:100%;"></a></p>
 
 <h3>
 <a id="user-content-crc" class="anchor" href="#crc" aria-hidden="true"><span class="octicon octicon-link"></span></a>crc</h3>
@@ -1106,7 +1106,7 @@ body .markdown-body
 <h4>
 <a id="user-content-功能仿真-1" class="anchor" href="#%E5%8A%9F%E8%83%BD%E4%BB%BF%E7%9C%9F-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>功能仿真</h4>
 
-<p><a href="/Users/lisihan969/src/projects/framing_encoding/crc_test.png" target="_blank"><img src="/Users/lisihan969/src/projects/framing_encoding/crc_test.png" alt="crc_test" style="max-width:100%;"></a></p>
+<p><a href="crc_test.png" target="_blank"><img src="crc_test.png" alt="crc_test" style="max-width:100%;"></a></p>
 
 <h3>
 <a id="user-content-whiting" class="anchor" href="#whiting" aria-hidden="true"><span class="octicon octicon-link"></span></a>whiting</h3>
@@ -1140,7 +1140,7 @@ body .markdown-body
 <h2>
 <a id="user-content-nc仿真" class="anchor" href="#nc%E4%BB%BF%E7%9C%9F" aria-hidden="true"><span class="octicon octicon-link"></span></a>NC仿真</h2>
 
-<p><a href="/Users/lisihan969/src/projects/framing_encoding/wave.png" target="_blank"><img src="/Users/lisihan969/src/projects/framing_encoding/wave.png" alt="wave" style="max-width:100%;"></a></p>
+<p><a href="wave.png" target="_blank"><img src="wave.png" alt="wave" style="max-width:100%;"></a></p>
 
 <p>输出结果<strong>正确</strong></p>
 
@@ -1285,7 +1285,7 @@ Wire Load Model Mode: top
 <h2>
 <a id="user-content-综合后仿真" class="anchor" href="#%E7%BB%BC%E5%90%88%E5%90%8E%E4%BB%BF%E7%9C%9F" aria-hidden="true"><span class="octicon octicon-link"></span></a>综合后仿真</h2>
 
-<p><a href="/Users/lisihan969/src/projects/framing_encoding/post-route_test.png" target="_blank"><img src="/Users/lisihan969/src/projects/framing_encoding/post-route_test.png" alt="post-route_test" style="max-width:100%;"></a></p>
+<p><a href="post-route_test.png" target="_blank"><img src="post-route_test.png" alt="post-route_test" style="max-width:100%;"></a></p>
 
 <p>波形与综合前波形<strong>几乎没有任何区别</strong></p>
 
@@ -1295,33 +1295,33 @@ Wire Load Model Mode: top
 <h3>
 <a id="user-content-pre-cts" class="anchor" href="#pre-cts" aria-hidden="true"><span class="octicon octicon-link"></span></a>pre CTS</h3>
 
-<p><a href="/Users/lisihan969/src/projects/framing_encoding/pre-CTS.png" target="_blank"><img src="/Users/lisihan969/src/projects/framing_encoding/pre-CTS.png" alt="pre-CTS" style="max-width:100%;"></a></p>
+<p><a href="pre-CTS.png" target="_blank"><img src="pre-CTS.png" alt="pre-CTS" style="max-width:100%;"></a></p>
 
 <h3>
 <a id="user-content-post-cts" class="anchor" href="#post-cts" aria-hidden="true"><span class="octicon octicon-link"></span></a>post CTS</h3>
 
-<p><a href="/Users/lisihan969/src/projects/framing_encoding/post-CTS.png" target="_blank"><img src="/Users/lisihan969/src/projects/framing_encoding/post-CTS.png" alt="post-CTS" style="max-width:100%;"></a></p>
+<p><a href="post-CTS.png" target="_blank"><img src="post-CTS.png" alt="post-CTS" style="max-width:100%;"></a></p>
 
 <h3>
 <a id="user-content-trail-routing" class="anchor" href="#trail-routing" aria-hidden="true"><span class="octicon octicon-link"></span></a>trail routing</h3>
 
-<p><a href="/Users/lisihan969/src/projects/framing_encoding/trail_routing.png" target="_blank"><img src="/Users/lisihan969/src/projects/framing_encoding/trail_routing.png" alt="trail_routing" style="max-width:100%;"></a></p>
+<p><a href="trail_routing.png" target="_blank"><img src="trail_routing.png" alt="trail_routing" style="max-width:100%;"></a></p>
 
 <h3>
 <a id="user-content-nano-routing" class="anchor" href="#nano-routing" aria-hidden="true"><span class="octicon octicon-link"></span></a>nano routing</h3>
 
-<p><a href="/Users/lisihan969/src/projects/framing_encoding/nano_routing.png" target="_blank"><img src="/Users/lisihan969/src/projects/framing_encoding/nano_routing.png" alt="nano_routing" style="max-width:100%;"></a></p>
+<p><a href="nano_routing.png" target="_blank"><img src="nano_routing.png" alt="nano_routing" style="max-width:100%;"></a></p>
 
 <h3>
 <a id="user-content-add-filler" class="anchor" href="#add-filler" aria-hidden="true"><span class="octicon octicon-link"></span></a>add filler</h3>
 
-<p><a href="/Users/lisihan969/src/projects/framing_encoding/add_filler.png" target="_blank"><img src="/Users/lisihan969/src/projects/framing_encoding/add_filler.png" alt="add_filler" style="max-width:100%;"></a></p>
+<p><a href="add_filler.png" target="_blank"><img src="add_filler.png" alt="add_filler" style="max-width:100%;"></a></p>
 
 <h3>
 <a id="user-content-final" class="anchor" href="#final" aria-hidden="true"><span class="octicon octicon-link"></span></a><em>final</em>
 </h3>
 
-<p><a href="/Users/lisihan969/src/projects/framing_encoding/final.png" target="_blank"><img src="/Users/lisihan969/src/projects/framing_encoding/final.png" alt="final" style="max-width:100%;"></a></p>
+<p><a href="final.png" target="_blank"><img src="final.png" alt="final" style="max-width:100%;"></a></p>
 
 <h2>
 <a id="user-content-附-源码" class="anchor" href="#%E9%99%84-%E6%BA%90%E7%A0%81" aria-hidden="true"><span class="octicon octicon-link"></span></a>
